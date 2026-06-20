@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": "minecraft:crossbow",
+  "addition": "minecraft:string",
+  "template": "tilted:flambe_smithing_template",
+  "result": {
+    "id": "minecraft:crossbow",
+    "components": {
+      "tilted:skin": 33
+    }
+  }
+}

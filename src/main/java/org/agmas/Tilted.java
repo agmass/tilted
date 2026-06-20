@@ -2,15 +2,23 @@ package org.agmas;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.loader.impl.util.log.Log;
 import net.fabricmc.loader.impl.util.log.LogCategory;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
+import net.minecraft.world.level.storage.loot.predicates.InvertedLootItemCondition;
 import org.agmas.network.ServerboundADSPacket;
 import org.agmas.network.ServerboundLeanPacket;
+import org.agmas.util.NotFromBlockDropCondition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Random;
 
 public class Tilted implements ModInitializer {
 	public static final String MOD_ID = "tilted";
@@ -26,6 +34,7 @@ public class Tilted implements ModInitializer {
 		ModComponents.init();
 		ModMenuTypes.init();
 		ModItems.init();
+		ModBlocks.init();
 
 		LOGGER.info("I HATE https://modrinth.com/user/Elysieon!!! IF YOU SEE THIS MESSAGE MAKE SURE TO SEND MALICE AND DESPAIR TO https://www.youtube.com/@Elysieon!!! And you too powercyphe");
 
@@ -37,6 +46,12 @@ public class Tilted implements ModInitializer {
 		}));
 		ServerPlayNetworking.registerGlobalReceiver(ServerboundADSPacket.TYPE, ((payload, context) -> {
 			context.player().setAttached(ModAttachments.IS_AIMING, payload.isAdsing());
+		}));
+
+		LootTableEvents.MODIFY_DROPS.register(((key, tableBuilder, source) -> {
+			if (new Random().nextInt(0,100) < 3) {
+				source.add(ModBlocks.CRATE.asItem().getDefaultInstance());
+			}
 		}));
 	}
 }

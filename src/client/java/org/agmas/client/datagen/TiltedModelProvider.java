@@ -15,6 +15,7 @@ import net.minecraft.client.renderer.item.properties.select.Charge;
 import net.minecraft.client.resources.model.cuboid.ItemModelGenerator;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.CrossbowItem;
+import org.agmas.ModBlocks;
 import org.agmas.ModItems;
 import org.agmas.Tilted;
 import org.agmas.attachments.SkinsComponent;
@@ -35,6 +36,7 @@ public class TiltedModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator) {
+        blockStateModelGenerator.createTrivialCube(ModBlocks.CRATE);
     }
 
     @Override
@@ -60,8 +62,11 @@ public class TiltedModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(ModItems.SHRIMP_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.NOSTALGIA_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.NROSES_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.FLAMBE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.TEMPERED_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.TRAINING_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
 
-        writeCrossbowSkin(SkinsComponent.BLACKICE);
+        /*writeCrossbowSkin(SkinsComponent.BLACKICE);
         writeCrossbowSkin(SkinsComponent.BLUEICE);
         writeCrossbowSkin(SkinsComponent.GREENICE);
         writeCrossbowSkin(SkinsComponent.LIGHTBLUEICE);
@@ -94,6 +99,9 @@ public class TiltedModelProvider extends FabricModelProvider {
         writeCrossbowSkin(SkinsComponent.SHRIMP);
         writeCrossbowSkin(SkinsComponent.SPECIALOPS);
         writeCrossbowSkin(SkinsComponent.VIRTUE);
+        writeCrossbowSkin(SkinsComponent.FLAMBE);
+        writeCrossbowSkin(SkinsComponent.TEMPERED);
+        writeCrossbowSkin(SkinsComponent.TRAINING);*/
     }
 
     @Override

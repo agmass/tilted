@@ -8,25 +8,28 @@ import net.fabricmc.loader.impl.util.log.Log;
 import net.fabricmc.loader.impl.util.log.LogCategory;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import org.agmas.ModAttachments;
 import org.agmas.ModComponents;
-import org.agmas.Tilted;
 import org.agmas.attachments.BarrelAttachment;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(value = CrossbowItem.class, priority = 3000)
 public abstract class LeaningArrowsMixin extends Item {
+
+    @Shadow
+    public abstract InteractionResult use(Level level, Player player, InteractionHand hand);
 
     public LeaningArrowsMixin(Properties properties) {
         super(properties);
@@ -89,5 +92,20 @@ public abstract class LeaningArrowsMixin extends Item {
                     .transform(new Vector3f((float) (-0.3 * source.getAttached(ModAttachments.LEANING_DIRECTION).intValue()), (float) 0,0));
             projectileEntity.setPos(projectileEntity.position().x+shf.x,projectileEntity.position().y,projectileEntity.position().z+shf.z);
         }
+    }
+    @WrapMethod(method = "getChargeDuration")
+    private static int chargeTime(ItemStack crossbow, LivingEntity user, Operation<Integer> original) {
+        float originalTime = original.call(crossbow,user);
+        if (user.hasAttached(ModAttachments.IS_AIMING)) {
+            if (user.getAttached(ModAttachments.IS_AIMING).booleanValue()) {
+                originalTime *= 0.8f;
+            }
+        }
+        if (crossbow.has(ModComponents.BARREL_COMPONENT)) {
+            if  (ModComponents.barrel(crossbow.get(ModComponents.BARREL_COMPONENT)).equals(BarrelAttachment.COMPENSATOR)) {
+                originalTime *= 0.4f;
+            }
+        }
+        return (int) originalTime;
     }
 }

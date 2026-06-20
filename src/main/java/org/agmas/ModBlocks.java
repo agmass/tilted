@@ -8,11 +8,24 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import org.agmas.block.CrateBlock;
 
 import java.util.function.Function;
 
 public class ModBlocks {
+    public static final Block CRATE = register(
+            "crate",
+            CrateBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS),
+            true
+    );
+
+    public static void init() {
+    }
+
     private static Block register(String name, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties properties, boolean shouldRegisterItem) {
         ResourceKey<Block> blockKey = keyOfBlock(name);
         Block block = blockFactory.apply(properties.setId(blockKey));

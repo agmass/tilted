@@ -3,6 +3,7 @@ package org.agmas.client.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
+import org.agmas.ModBlocks;
 import org.agmas.ModItems;
 
 import java.util.concurrent.CompletableFuture;
@@ -35,5 +36,11 @@ public class TiltedLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.SHRIMP_SMITHING_TEMPLATE, "Shrimp Crossbow Smithing Template");
         translationBuilder.add(ModItems.SPECIALOPS_SMITHING_TEMPLATE, "Special Ops Crossbow Smithing Template");
         translationBuilder.add(ModItems.VIRTUE_SMITHING_TEMPLATE, "Virtue Crossbow Smithing Template");
+
+        translationBuilder.add(ModItems.FLAMBE_SMITHING_TEMPLATE, "Flambe Crossbow Smithing Template");
+        translationBuilder.add(ModItems.TEMPERED_SMITHING_TEMPLATE, "Tempered Ops Crossbow Smithing Template");
+        translationBuilder.add(ModItems.TRAINING_SMITHING_TEMPLATE, "Training Crossbow Smithing Template");
+
+        translationBuilder.add(ModBlocks.CRATE, "Skin Crate");
     }
 }

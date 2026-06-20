@@ -16,8 +16,11 @@
   "tilted.barrels.extended_barrel.desc": "Increases power, but increases spread.",
   "tilted.barrels.flash_hider": "Flash Hider",
   "tilted.barrels.flash_hider.desc": "Greatly reduces spread.",
+  "tilted.barrels.compensator": "Compensator",
+  "tilted.barrels.compensator.desc": "Greatly decreases charge time.",
   "tilted.barrels.none": "No Barrel",
   "tilted.barrels.none.desc": "No barrel attachment.",
+  "block.tilted.crate": "Crate",
 
   "item.tilted.carnivora_smithing_template": "Carnivora Crossbow Smithing Template",
   "item.tilted.carrion_smithing_template": "Carrion Crossbow Smithing Template",
@@ -39,5 +42,8 @@
   "item.tilted.shipped_smithing_template": "Shipped Crossbow Smithing Template",
   "item.tilted.shrimp_smithing_template": "Shrimp Crossbow Smithing Template",
   "item.tilted.specialops_smithing_template": "Special Ops Crossbow Smithing Template",
-  "item.tilted.virtue_smithing_template": "Virtue Crossbow Smithing Template"
+  "item.tilted.virtue_smithing_template": "Virtue Crossbow Smithing Template",
+  "item.tilted.flambe_smithing_template": "Flambe Crossbow Smithing Template",
+  "item.tilted.training_smithing_template": "Training Ops Crossbow Smithing Template",
+  "item.tilted.tempered_smithing_template": "Tempered Crossbow Smithing Template"
 }

@@ -33,5 +33,8 @@ public enum SkinsComponent {
     SHIPPED,
     SHRIMP,
     SPECIALOPS,
-    VIRTUE
+    VIRTUE,
+    FLAMBE,
+    TEMPERED,
+    TRAINING
 }
