@@ -28,10 +28,10 @@ public class ModBlocks {
     }
 
     private static ResourceKey<Block> keyOfBlock(String name) {
-        return ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Tilted.MOD_ID, name));
+        return ResourceKey.create(Registries.BLOCK, Tilted.of(name));
     }
 
     private static ResourceKey<Item> keyOfItem(String name) {
-        return ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Tilted.MOD_ID, name));
+        return ResourceKey.create(Registries.ITEM, Tilted.of(name));
     }
 }

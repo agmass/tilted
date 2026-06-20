@@ -13,17 +13,17 @@ import org.agmas.attachments.SkinsComponent;
 public class ModComponents {
     public static final DataComponentType<Integer> SCOPE_COMPONENT = Registry.register(
             BuiltInRegistries.DATA_COMPONENT_TYPE,
-            Identifier.fromNamespaceAndPath(Tilted.MOD_ID, "scope"),
+            Tilted.of("scope"),
             DataComponentType.<Integer>builder().persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT).build()
     );
     public static final DataComponentType<Integer> BARREL_COMPONENT = Registry.register(
             BuiltInRegistries.DATA_COMPONENT_TYPE,
-            Identifier.fromNamespaceAndPath(Tilted.MOD_ID, "barrel"),
+            Tilted.of("barrel"),
             DataComponentType.<Integer>builder().persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT).build()
     );
     public static final DataComponentType<Integer> SKIN_COMPONENT = Registry.register(
             BuiltInRegistries.DATA_COMPONENT_TYPE,
-            Identifier.fromNamespaceAndPath(Tilted.MOD_ID, "skin"),
+            Tilted.of("skin"),
             DataComponentType.<Integer>builder().persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT).build()
     );
 
