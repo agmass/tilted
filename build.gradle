@@ -53,7 +53,7 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
-	api "maven.modrinth:enchancement:26.1-r17"
+	implementation "maven.modrinth:enchancement:1.21.11-r8"
 }
 
 processResources {
