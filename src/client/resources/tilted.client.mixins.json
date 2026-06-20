@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "package": "org.agmas.client.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "CameraMixin",
+    "ExtractRenderStateMixin",
+    "GreenCrosshairMixin",
+    "LeanHeadMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  },
+  "mixins": [
+    "AvatarMixin",
+    "ChangeCrossbowSkinMixin",
+    "InputsMixin",
+    "SwapDownInputsMixin"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "package": "org.agmas.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "AddToItemTooltipMixin",
+    "LeaningArrowsMixin",
+    "OverrideFletchingTableMixin",
+    "SilentArrowMixin",
+    "SmithingMenuMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+	}
+}

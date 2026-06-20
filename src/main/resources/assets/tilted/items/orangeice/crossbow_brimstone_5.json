@@ -1,0 +1,11 @@
+{
+  "model": {
+      "type": "minecraft:composite",
+      "models": [
+{"type": "minecraft:model",
+"model":"tilted:item/orangeice/crossbow"
+},
+{"type": "minecraft:model",
+"model": "tilted:item/brimstone_5"}]
+    }
+}

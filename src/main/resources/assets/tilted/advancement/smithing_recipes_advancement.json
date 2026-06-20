@@ -1,0 +1,52 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_crossbow": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:crossbow"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "loot": [],
+    "recipes": [
+      "tilted:black_ice_smithing_recipe",
+      "tilted:blue_ice_smithing_recipe",
+      "tilted:green_ice_smithing_recipe",
+      "tilted:carnivora_smithing_recipe",
+      "tilted:carrion_smithing_recipe",
+      "tilted:cyan_ice_smithing_recipe",
+      "tilted:goldeneye_smithing_recipe",
+      "tilted:gui_smithing_recipe",
+      "tilted:history_smithing_recipe",
+      "tilted:holiday_smithing_recipe",
+      "tilted:hyperdeath_smithing_recipe",
+      "tilted:ice_smithing_recipe",
+      "tilted:junkyard_smithing_recipe",
+      "tilted:light_blue_ice_smithing_recipe",
+      "tilted:magenta_ice_smithing_recipe",
+      "tilted:mined_smithing_recipe",
+      "tilted:moneytalks_smithing_recipe",
+      "tilted:nostalgia_smithing_recipe",
+      "tilted:nroses_smithing_recipe",
+      "tilted:orange_ice_smithing_recipe",
+      "tilted:pink_ice_smithing_recipe",
+      "tilted:purple_ice_smithing_recipe",
+      "tilted:red_ice_smithing_recipe",
+      "tilted:revenant_smithing_recipe",
+      "tilted:ripper_smithing_recipe",
+      "tilted:runescape_smithing_recipe",
+      "tilted:sentinal_smithing_recipe",
+      "tilted:shipped_smithing_recipe",
+      "tilted:shrimp_smithing_recipe",
+      "tilted:specialops_smithing_recipe",
+      "tilted:virtue_smithing_recipe",
+      "tilted:yellow_ice_smithing_recipe"
+    ]
+  }
+}

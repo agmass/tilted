@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "tilted:ice_smithing_template",
+  "base": "minecraft:crossbow",
+  "addition": "minecraft:magenta_dye",
+  "result": {
+    "id": "minecraft:crossbow",
+    "components": {
+      "tilted:skin": 6
+    }
+  }
+}
