@@ -65,8 +65,20 @@ public class TiltedModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(ModItems.FLAMBE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.TEMPERED_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.TRAINING_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.AQUARIUS_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.CHERRY_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.CLOCKWORK_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.THORNED_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.SUNSET_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.TIDE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.WILLPOWER_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.WRATH_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.MISSING_TEXTURE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.COTTONCANDY_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.HAMMER_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.KEBAB_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
 
-        /*writeCrossbowSkin(SkinsComponent.BLACKICE);
+        writeCrossbowSkin(SkinsComponent.BLACKICE);
         writeCrossbowSkin(SkinsComponent.BLUEICE);
         writeCrossbowSkin(SkinsComponent.GREENICE);
         writeCrossbowSkin(SkinsComponent.LIGHTBLUEICE);
@@ -101,7 +113,19 @@ public class TiltedModelProvider extends FabricModelProvider {
         writeCrossbowSkin(SkinsComponent.VIRTUE);
         writeCrossbowSkin(SkinsComponent.FLAMBE);
         writeCrossbowSkin(SkinsComponent.TEMPERED);
-        writeCrossbowSkin(SkinsComponent.TRAINING);*/
+        writeCrossbowSkin(SkinsComponent.TRAINING);
+        writeCrossbowSkin(SkinsComponent.AQUARIUS);
+        writeCrossbowSkin(SkinsComponent.CHERRY);
+        writeCrossbowSkin(SkinsComponent.CLOCKWORK);
+        writeCrossbowSkin(SkinsComponent.SUNSET);
+        writeCrossbowSkin(SkinsComponent.THORNED);
+        writeCrossbowSkin(SkinsComponent.TIDE);
+        writeCrossbowSkin(SkinsComponent.WILLPOWER);
+        writeCrossbowSkin(SkinsComponent.WRATH);
+        writeCrossbowSkin(SkinsComponent.MISSING_TEXTURE);
+        writeCrossbowSkin(SkinsComponent.COTTONCANDY);
+        writeCrossbowSkin(SkinsComponent.HAMMER);
+        writeCrossbowSkin(SkinsComponent.KEBAB);
     }
 
     @Override

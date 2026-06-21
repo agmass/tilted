@@ -35,6 +35,7 @@ public class Tilted implements ModInitializer {
 		ModMenuTypes.init();
 		ModItems.init();
 		ModBlocks.init();
+		ModEnchantments.init();
 
 		LOGGER.info("I HATE https://modrinth.com/user/Elysieon!!! IF YOU SEE THIS MESSAGE MAKE SURE TO SEND MALICE AND DESPAIR TO https://www.youtube.com/@Elysieon!!! And you too powercyphe");
 
@@ -49,7 +50,7 @@ public class Tilted implements ModInitializer {
 		}));
 
 		LootTableEvents.MODIFY_DROPS.register(((key, tableBuilder, source) -> {
-			if (new Random().nextInt(0,700) <= 1) {
+			if (new Random().nextInt(0,500) <= 1) {
 				source.add(ModBlocks.CRATE.asItem().getDefaultInstance());
 			}
 		}));

@@ -44,10 +44,26 @@ public class ModItems {
     public static final Item TEMPERED_SMITHING_TEMPLATE = register("tempered_smithing_template",Item::new, new Item.Properties());
     public static final Item TRAINING_SMITHING_TEMPLATE = register("training_smithing_template",Item::new, new Item.Properties());
 
+
+    public static final Item AQUARIUS_SMITHING_TEMPLATE = register("aquarius_smithing_template",Item::new, new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final Item CHERRY_SMITHING_TEMPLATE = register("cherry_smithing_template",Item::new, new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final Item CLOCKWORK_SMITHING_TEMPLATE = register("clockwork_smithing_template",Item::new, new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final Item SUNSET_SMITHING_TEMPLATE = register("sunset_smithing_template",Item::new, new Item.Properties());
+    public static final Item THORNED_SMITHING_TEMPLATE = register("thorned_smithing_template",Item::new, new Item.Properties().rarity(Rarity.RARE));
+    public static final Item TIDE_SMITHING_TEMPLATE = register("tide_smithing_template",Item::new, new Item.Properties());
+    public static final Item WILLPOWER_SMITHING_TEMPLATE = register("willpower_smithing_template",Item::new, new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final Item WRATH_SMITHING_TEMPLATE = register("wrath_smithing_template",Item::new, new Item.Properties().rarity(Rarity.UNCOMMON));
+
+    public static final Item MISSING_TEXTURE_SMITHING_TEMPLATE = register("missing_texture_smithing_template",Item::new, new Item.Properties().rarity(Rarity.RARE));
+    public static final Item COTTONCANDY_SMITHING_TEMPLATE = register("cottoncandy_smithing_template",Item::new, new Item.Properties());
+    public static final Item HAMMER_SMITHING_TEMPLATE = register("hammer_smithing_template",Item::new, new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final Item KEBAB_SMITHING_TEMPLATE = register("kebab_smithing_template",Item::new, new Item.Properties().rarity(Rarity.UNCOMMON));
+
+
     public static void init() {
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS)
                 .register((creativeTab) -> {
-                        creativeTab.accept(ModItems.ICE_SMITHING_TEMPLATE);
+                    creativeTab.accept(ModItems.ICE_SMITHING_TEMPLATE);
                     creativeTab.accept(ModItems.CARNIVORA_SMITHING_TEMPLATE);
                     creativeTab.accept(ModItems.JUNKYARD_SMITHING_TEMPLATE);
                     creativeTab.accept(ModItems.MINED_SMITHING_TEMPLATE);
@@ -71,6 +87,18 @@ public class ModItems {
                     creativeTab.accept(ModItems.FLAMBE_SMITHING_TEMPLATE);
                     creativeTab.accept(ModItems.TEMPERED_SMITHING_TEMPLATE);
                     creativeTab.accept(ModItems.TRAINING_SMITHING_TEMPLATE);
+                    creativeTab.accept(ModItems.AQUARIUS_SMITHING_TEMPLATE);
+                    creativeTab.accept(ModItems.CHERRY_SMITHING_TEMPLATE);
+                    creativeTab.accept(ModItems.CLOCKWORK_SMITHING_TEMPLATE);
+                    creativeTab.accept(ModItems.SUNSET_SMITHING_TEMPLATE);
+                    creativeTab.accept(ModItems.THORNED_SMITHING_TEMPLATE);
+                    creativeTab.accept(ModItems.TIDE_SMITHING_TEMPLATE);
+                    creativeTab.accept(ModItems.WILLPOWER_SMITHING_TEMPLATE);
+                    creativeTab.accept(ModItems.WRATH_SMITHING_TEMPLATE);
+                    creativeTab.accept(ModItems.MISSING_TEXTURE_SMITHING_TEMPLATE);
+                    creativeTab.accept(ModItems.COTTONCANDY_SMITHING_TEMPLATE);
+                    creativeTab.accept(ModItems.HAMMER_SMITHING_TEMPLATE);
+                    creativeTab.accept(ModItems.KEBAB_SMITHING_TEMPLATE);
                 });
     }
 

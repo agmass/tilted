@@ -28,6 +28,8 @@ public class CrateBlock extends Block {
             ModItems.SHIPPED_SMITHING_TEMPLATE,
             ModItems.TEMPERED_SMITHING_TEMPLATE,
             ModItems.TRAINING_SMITHING_TEMPLATE,
+            ModItems.SUNSET_SMITHING_TEMPLATE,
+            ModItems.TIDE_SMITHING_TEMPLATE,
             ModItems.FLAMBE_SMITHING_TEMPLATE
     );
     List<Item> uncommonDrops =
@@ -37,11 +39,19 @@ public class CrateBlock extends Block {
                     ModItems.SPECIALOPS_SMITHING_TEMPLATE,
                     ModItems.VIRTUE_SMITHING_TEMPLATE,
                     ModItems.RUNESCAPE_SMITHING_TEMPLATE,
+                    ModItems.HAMMER_SMITHING_TEMPLATE,
+                    ModItems.KEBAB_SMITHING_TEMPLATE,
+                    ModItems.WILLPOWER_SMITHING_TEMPLATE,
+                    ModItems.WRATH_SMITHING_TEMPLATE,
+                    ModItems.AQUARIUS_SMITHING_TEMPLATE,
+                    ModItems.CHERRY_SMITHING_TEMPLATE,
+                    ModItems.CLOCKWORK_SMITHING_TEMPLATE,
                     ModItems.SENTINAL_SMITHING_TEMPLATE);
     List<Item> rareDrops =
             List.of(ModItems.NOSTALGIA_SMITHING_TEMPLATE,
                     ModItems.ICE_SMITHING_TEMPLATE,
                     ModItems.SHRIMP_SMITHING_TEMPLATE,
+                    ModItems.MISSING_TEXTURE_SMITHING_TEMPLATE,
                     ModItems.GUI_SMITHING_TEMPLATE);
     @Override
     protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {

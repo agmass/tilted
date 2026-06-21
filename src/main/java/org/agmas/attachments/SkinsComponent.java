@@ -36,5 +36,17 @@ public enum SkinsComponent {
     VIRTUE,
     FLAMBE,
     TEMPERED,
-    TRAINING
+    TRAINING,
+    AQUARIUS,
+    CHERRY,
+    CLOCKWORK,
+    SUNSET,
+    THORNED,
+    TIDE,
+    WILLPOWER,
+    WRATH,
+    MISSING_TEXTURE,
+    COTTONCANDY,
+    HAMMER,
+    KEBAB
 }

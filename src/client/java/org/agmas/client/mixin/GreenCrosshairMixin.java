@@ -6,6 +6,9 @@ import com.mojang.blaze3d.pipeline.RenderPipeline;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+//? if >26.1 {
+/*import net.minecraft.client.gui.Hud;*/
+//? }
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.EasingType;
@@ -19,7 +22,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.awt.*;
 
+//? if <=26.1 {
 @Mixin(value = Gui.class, priority = 20)
+//? } else {
+/*@Mixin(value = Hud.class, priority = 20)
+*///? }
 public class GreenCrosshairMixin {
 	@WrapOperation(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V", ordinal = 0), method = "extractCrosshair")
 	private void init(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {

@@ -30,12 +30,6 @@ public abstract class InputsMixin {
 	@Shadow
 	protected abstract void startUseItem();
 
-	@Shadow
-	protected abstract void continueAttack(boolean down);
-
-	@Shadow
-	@Nullable
-	public Screen screen;
 
 	@WrapMethod(method = "startAttack")
 	public boolean noAttack2(Operation<Boolean> original) {

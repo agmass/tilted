@@ -1,5 +1,5 @@
 plugins {
-	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+	id("net.fabricmc.fabric-loom") version "1.16-SNAPSHOT"
 	id 'maven-publish'
 }
 
@@ -46,14 +46,12 @@ fabricApi {
 
 dependencies {
 	// To change the versions see the gradle.properties file
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	minecraft "com.mojang:minecraft:" + property("minecraft_version") as String
 	
-	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc:fabric-loader:" + property("loader_version") as String
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
-	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
-
-	api "maven.modrinth:enchancement:26.1-r17"
+	implementation "net.fabricmc.fabric-api:fabric-api:" + property("fabric_api_version") as String
 }
 
 processResources {
