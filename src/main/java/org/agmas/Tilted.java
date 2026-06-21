@@ -49,7 +49,7 @@ public class Tilted implements ModInitializer {
 		}));
 
 		LootTableEvents.MODIFY_DROPS.register(((key, tableBuilder, source) -> {
-			if (new Random().nextInt(0,100) < 3) {
+			if (new Random().nextInt(0,700) <= 1) {
 				source.add(ModBlocks.CRATE.asItem().getDefaultInstance());
 			}
 		}));

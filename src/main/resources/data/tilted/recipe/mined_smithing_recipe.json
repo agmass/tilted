@@ -2,7 +2,7 @@
   "type": "minecraft:smithing_transform",
   "base": "minecraft:crossbow",
   "addition": "minecraft:string",
-  "template": "tilted:junkyard_smithing_template",
+  "template": "tilted:mined_smithing_template",
   "result": {
     "id": "minecraft:crossbow",
     "components": {
