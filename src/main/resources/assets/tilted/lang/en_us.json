@@ -22,6 +22,9 @@
   "tilted.barrels.none.desc": "No barrel attachment.",
   "block.tilted.crate": "Crate",
   "enchantment.tilted.magazine": "Magazine",
+  "key.category.tilted.tilted": "Tilted",
+  "key.tilted.leanLeft": "Lean Left",
+  "key.tilted.leanRight": "Lean Right",
 
   "item.tilted.carnivora_smithing_template": "Carnivora Crossbow Smithing Template",
   "item.tilted.carrion_smithing_template": "Carrion Crossbow Smithing Template",
@@ -56,7 +59,7 @@
   "item.tilted.wrath_smithing_template": "Wrath Crossbow Smithing Template",
   "item.tilted.sunset_smithing_template": "Sunset Crossbow Smithing Template",
   "item.tilted.missing_texture_smithing_template": "Missing Texture Crossbow Smithing Template",
-  "item.tilted.cotton_candy_smithing_template": "Cotton Candy Ops Crossbow Smithing Template",
+  "item.tilted.cottoncandy_smithing_template": "Cotton Candy Ops Crossbow Smithing Template",
   "item.tilted.hammer_smithing_template": "Hammer Crossbow Smithing Template",
   "item.tilted.kebab_smithing_template": "Kebab Crossbow Smithing Template"
 }

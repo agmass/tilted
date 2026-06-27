@@ -2,7 +2,7 @@
   "type": "minecraft:smithing_transform",
   "base": "minecraft:crossbow",
   "addition": "minecraft:string",
-  "template": "tilted:hammer_smithing_template",
+  "template": "tilted:kebab_smithing_template",
   "result": {
     "id": "minecraft:crossbow",
     "components": {
