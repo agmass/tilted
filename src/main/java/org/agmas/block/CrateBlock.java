@@ -46,6 +46,7 @@ public class CrateBlock extends Block {
                     ModItems.AQUARIUS_SMITHING_TEMPLATE,
                     ModItems.CHERRY_SMITHING_TEMPLATE,
                     ModItems.CLOCKWORK_SMITHING_TEMPLATE,
+                    ModItems.COTTONCANDY_SMITHING_TEMPLATE,
                     ModItems.SENTINAL_SMITHING_TEMPLATE);
     List<Item> rareDrops =
             List.of(ModItems.NOSTALGIA_SMITHING_TEMPLATE,

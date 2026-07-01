@@ -262,7 +262,7 @@ public class TiltedModelProvider extends FabricModelProvider {
             fileWriter.write("{\n");
             fileWriter.write("  \"model\": {\n");
             fileWriter.write("      \"type\": \"minecraft:composite\",\n");
-            fileWriter.write("      \"models\": [\n{\"type\": \"minecraft:model\",\n\"model\":\"tilted:item/" + skinEnum.name().toLowerCase() + "/crossbow\"\n},\n{\"type\": \"minecraft:model\",\n\"model\": \"tilted:item/" + composition +"\"}]\n");
+            fileWriter.write("      \"models\": [\n{\"type\": \"minecraft:model\",\n\"model\":\"tilted:item/" + skinEnum.name().toLowerCase() + "/crossbow_pulling_2\"\n},\n{\"type\": \"minecraft:model\",\n\"model\": \"tilted:item/" + composition +"\"}]\n");
             fileWriter.write("    }\n");
             fileWriter.write("}");
             fileWriter.close();

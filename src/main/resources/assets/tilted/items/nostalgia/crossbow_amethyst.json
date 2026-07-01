@@ -3,7 +3,7 @@
       "type": "minecraft:composite",
       "models": [
 {"type": "minecraft:model",
-"model":"tilted:item/nostalgia/crossbow"
+"model":"tilted:item/nostalgia/crossbow_pulling_2"
 },
 {"type": "minecraft:model",
 "model": "tilted:item/scatter"}]

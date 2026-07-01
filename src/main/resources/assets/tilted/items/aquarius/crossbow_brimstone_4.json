@@ -3,7 +3,7 @@
       "type": "minecraft:composite",
       "models": [
 {"type": "minecraft:model",
-"model":"tilted:item/aquarius/crossbow"
+"model":"tilted:item/aquarius/crossbow_pulling_2"
 },
 {"type": "minecraft:model",
 "model": "tilted:item/brimstone_4"}]

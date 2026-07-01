@@ -1,9 +1,9 @@
 package org.agmas;
 
 //? if >=26.1 {
-/*import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
-*///? }
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;import net.minecraft.core.Registry;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+//? }
+import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
@@ -65,7 +65,7 @@ public class ModItems {
     public static void init() {
         //? if >=26.1 {
         
-        /*CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS)
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS)
                 .register((creativeTab) -> {
                     creativeTab.accept(ModItems.ICE_SMITHING_TEMPLATE);
                     creativeTab.accept(ModItems.CARNIVORA_SMITHING_TEMPLATE);
@@ -104,7 +104,7 @@ public class ModItems {
                     creativeTab.accept(ModItems.HAMMER_SMITHING_TEMPLATE);
                     creativeTab.accept(ModItems.KEBAB_SMITHING_TEMPLATE);
                 });
-         *///? }
+         //? }
     }
 
     public static <T extends Item> T register(String name, Function<Item.Properties, T> itemFactory, Item.Properties settings) {

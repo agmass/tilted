@@ -13,7 +13,7 @@ import org.agmas.screen.FletchingTableMenu;
 public class ModMenuTypes {
 
     //? if >=26.1 {
-    /*public static final MenuType<FletchingTableMenu> FLETCHING_TABLE = register("fletching_table", FletchingTableMenu::new);
+    public static final MenuType<FletchingTableMenu> FLETCHING_TABLE = register("fletching_table", FletchingTableMenu::new);
 
     public static <T extends AbstractContainerMenu> MenuType<T> register(
             String name,
@@ -21,10 +21,10 @@ public class ModMenuTypes {
     ) {
         return Registry.register(BuiltInRegistries.MENU, name, new MenuType<>(constructor, FeatureFlagSet.of()));
     }
-    *///? } else {
-    public static final MenuType<FletchingTableMenu> FLETCHING_TABLE = Registry.register(BuiltInRegistries.MENU, Identifier.fromNamespaceAndPath(Tilted.MOD_ID, "fletching_table"), new MenuType<>(FletchingTableMenu::new, FeatureFlagSet.of()));
+    //? } else {
+    /*public static final MenuType<FletchingTableMenu> FLETCHING_TABLE = Registry.register(BuiltInRegistries.MENU, Identifier.fromNamespaceAndPath(Tilted.MOD_ID, "fletching_table"), new MenuType<>(FletchingTableMenu::new, FeatureFlagSet.of()));
 
-    //? }
+    *///? }
 
     public static void init() {
     }

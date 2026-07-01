@@ -3,7 +3,7 @@
       "type": "minecraft:composite",
       "models": [
 {"type": "minecraft:model",
-"model":"tilted:item/lightblueice/crossbow"
+"model":"tilted:item/lightblueice/crossbow_pulling_2"
 },
 {"type": "minecraft:model",
 "model": "tilted:item/brimstone_1"}]
