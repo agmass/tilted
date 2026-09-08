@@ -5,6 +5,7 @@
   "client": [
     "CameraMixin",
     "ExtractRenderStateMixin",
+    "GuiGraphicsMixin",
     "GreenCrosshairMixin",
     "LeanHeadMixin"
   ],
@@ -17,6 +18,7 @@
   "mixins": [
     "AvatarMixin",
     "ChangeCrossbowSkinMixin",
+    "ItemOverridesMixin",
     "InputsMixin",
     "OldCameraMixin",
     "SwapDownInputsMixin"

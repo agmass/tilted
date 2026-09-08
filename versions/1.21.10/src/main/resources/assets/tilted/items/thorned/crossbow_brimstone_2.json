@@ -1,11 +1,9 @@
 {
-  "model": {
-      "type": "minecraft:composite",
-      "models": [
-{"type": "minecraft:model",
-"model":"tilted:item/thorned/crossbow_pulling_2"
-},
-{"type": "minecraft:model",
-"model": "tilted:item/brimstone_2"}]
+    "model": {
+        "type": "minecraft:composite",
+        "models": [
+            { "type": "minecraft:model", "model": "tilted:item/thorned/crossbow_pulling_2" },
+            { "type": "minecraft:model", "model": "tilted:item/brimstone_2" }
+        ]
     }
 }

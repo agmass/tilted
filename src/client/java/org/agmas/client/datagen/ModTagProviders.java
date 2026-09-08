@@ -44,6 +44,8 @@ public class ModTagProviders {
             //? if >=26.2 {
             /*tag(tag)
                     .add(ResourceKey.create(Registries.ITEM, BuiltInRegistries.ITEM.getKey(item)));
+            *///? } else if <1.21.2 {
+            /*tag(tag).add(ResourceKey.create(Registries.ITEM, BuiltInRegistries.ITEM.getKey(item)));
             *///? } else {
             valueLookupBuilder(tag)
                     .add(item);

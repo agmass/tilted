@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import org.agmas.Tilted;
 import org.agmas.screen.FletchingTableMenu;
 //? if >=1.21.11 {
 import org.jspecify.annotations.Nullable;
@@ -21,7 +22,11 @@ import org.jspecify.annotations.Nullable;
 /*import org.jetbrains.annotations.Nullable;
 *///? }
 
+//? if =1.21.1 {
+/*public class FletchingTableBlock extends net.minecraft.world.level.block.FletchingTableBlock {
+*///? } else {
 public class FletchingTableBlock extends Block {
+//? }
     public FletchingTableBlock(Properties properties) {
         super(properties);
     }

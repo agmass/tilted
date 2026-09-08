@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smithing_transform",
+
+    "template": "tilted:history_smithing_template",
+    "base": "minecraft:crossbow",
+    "addition": "minecraft:string",
+
+    "result": { "id": "minecraft:crossbow", "components": { "tilted:skin": 17 } }
+}

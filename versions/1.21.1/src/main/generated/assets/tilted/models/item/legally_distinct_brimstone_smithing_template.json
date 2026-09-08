@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tilted:item/legally_distinct_brimstone_smithing_template"
+  }
+}

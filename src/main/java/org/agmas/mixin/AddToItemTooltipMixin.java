@@ -14,7 +14,10 @@ import org.agmas.ModComponents;
 import org.agmas.ModTags;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
+import org.slf4j.Logger;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -25,6 +28,9 @@ import java.util.function.Consumer;
 
 @Mixin(Item.class)
 public abstract class AddToItemTooltipMixin {
+    @Shadow
+    @Final
+    private static Logger LOGGER;
 
     //? if >=1.21.6 {
     @Inject(method = "appendHoverText", at = @At("HEAD"))
@@ -42,22 +48,7 @@ public abstract class AddToItemTooltipMixin {
             }
         }
     }
-    //? } else {
-    /*@Inject(method = "appendHoverText", at = @At("HEAD"))
-    public void addText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag, CallbackInfo ci) {
-        if (itemStack.is(ModTags.CROSSBOWS)) {
-            if (itemStack.has(ModComponents.BARREL_COMPONENT)) {
-                list.add(Component.translatable("tilted.barrels." + ModComponents.barrel(itemStack.get(ModComponents.BARREL_COMPONENT)).name().toLowerCase()).withColor(Color.GRAY.getRGB()));
-            } else {
-                list.add(Component.translatable("tilted.barrels.none").withColor(Color.GRAY.getRGB()));
-            }
-            if (itemStack.has(ModComponents.SCOPE_COMPONENT)) {
-                list.add(Component.translatable("tilted.scopes." + ModComponents.scope(itemStack.get(ModComponents.SCOPE_COMPONENT)).name().toLowerCase()).withColor(Color.GRAY.getRGB()));
-            } else {
-                list.add(Component.translatable("tilted.scopes.iron_sights").withColor(Color.GRAY.getRGB()));
-            }
-        }
-    }
-    *///? }
+    //? }
 
+    // weird 1.21.1 mixin quirk doesn't like base class mixins, so its moved to LeaningArrowsMixin ;D
 }

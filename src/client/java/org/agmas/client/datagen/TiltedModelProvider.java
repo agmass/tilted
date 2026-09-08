@@ -1,16 +1,29 @@
 package org.agmas.client.datagen;
 
+//? if >=1.21.4 {
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
+//? } else {
+/*import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+*///? }
+
 //? if >=26.1 {
 /*import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 *///? } else {
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 //? }
+
+//? if >=1.21.4 {
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
+//? } else {
+/*import net.minecraft.data.models.BlockModelGenerators;
+import net.minecraft.data.models.ItemModelGenerators;
+import net.minecraft.data.models.model.ModelTemplates;
+*///? }
 import org.agmas.ModBlocks;
 import org.agmas.ModItems;
+import org.agmas.Tilted;
 import org.agmas.attachments.SkinsComponent;
 
 import java.io.File;
@@ -45,8 +58,13 @@ public class TiltedModelProvider extends FabricModelProvider {
         dir.mkdir();
         dir = new File("../../src/main/resources/assets/tilted/models/item");
         dir.mkdir();
+
+        //? if >= 1.21.4 {
+
         dir = new File("../../src/main/resources/assets/tilted/items");
         dir.mkdir();
+
+        //? }
 
         itemModelGenerator.generateFlatItem(ModItems.CARNIVORA_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.RUNESCAPE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
@@ -199,7 +217,11 @@ public class TiltedModelProvider extends FabricModelProvider {
     //
     // Is this writing right into resources rather than the generated folder? YEAH. what are YOU going to do about it. You're not my mom?
     public static void writeCrossbowSkin(SkinsComponent skinEnum) {
+        // 1.21.1 uses models/item/ files for vanilla states, so no need to create main model.
+        //? if >= 1.21.4 {
         createMainModel(skinEnum);
+        //? }
+
         createSingleSkinModel(skinEnum,"_amethyst", "scatter");
         createSingleSkinModel(skinEnum,"_torch", "torch");
         createSingleSkinModel(skinEnum,"_brimstone_0", "brimstone_0");
@@ -316,17 +338,45 @@ public class TiltedModelProvider extends FabricModelProvider {
         }
     }
     public static void createSingleSkinModel(SkinsComponent skinEnum, String suffix, String composition) {
-        try {
-            File dir = new File("../../src/main/resources/assets/tilted/items/" + skinEnum.name().toLowerCase());
-            dir.mkdir();
-            FileWriter fileWriter = new FileWriter("../../src/main/resources/assets/tilted/items/" +skinEnum.name().toLowerCase() + "/"+ "crossbow" + suffix + ".json");
-            fileWriter.write("{\n");
-            fileWriter.write("  \"model\": {\n");
-            fileWriter.write("      \"type\": \"minecraft:composite\",\n");
-            fileWriter.write("      \"models\": [\n{\"type\": \"minecraft:model\",\n\"model\":\"tilted:item/" + skinEnum.name().toLowerCase() + "/crossbow_pulling_2\"\n},\n{\"type\": \"minecraft:model\",\n\"model\": \"tilted:item/" + composition +"\"}]\n");
-            fileWriter.write("    }\n");
-            fileWriter.write("}");
-            fileWriter.close();
+        String skinName = skinEnum.name().toLowerCase();
+
+        //? if >= 1.21.4 {
+        String pathDir = "../../src/main/resources/assets/tilted/items/" + skinName;
+        //? } else {
+        /*String pathDir = "../../src/main/resources/assets/tilted/models/item/" + skinName;
+        *///? }
+
+        boolean mkdirModelsSuccessful = new File(pathDir).mkdirs();
+
+        if (mkdirModelsSuccessful) Tilted.LOGGER.info("successfully created recipe folder at <" + pathDir + ">");
+        else Tilted.LOGGER.error("cannot create recipe folder at <" + pathDir + ">");
+
+        try (FileWriter writer = new FileWriter(pathDir + "/crossbow" + suffix + ".json")) {
+            writer.write(
+                //? if >= 1.21.4 {
+                """
+                {
+                    "model": {
+                        "type": "minecraft:composite",
+                        "models": [
+                            { "type": "minecraft:model", "model": "tilted:item/%s/crossbow_pulling_2" },
+                            { "type": "minecraft:model", "model": "tilted:item/%s" }
+                        ]
+                    }
+                }
+                """.formatted(skinName, composition)
+                //? } else {
+                /*"""
+                {
+                    "parent": "minecraft:item/crossbow",
+                    "textures": {
+                        "layer0": "tilted:item/%s/crossbow_pulling_2",
+                        "layer1": "tilted:item/%s"
+                    }
+                } 
+                """.formatted(skinName, composition)
+                *///? }
+            );
         } catch (IOException e) {
             e.printStackTrace();
         }

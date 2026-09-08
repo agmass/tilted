@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smithing_transform",
+
+    "template": "tilted:legally_distinct_brimstone_smithing_template",
+    "base": "minecraft:crossbow",
+    "addition": "minecraft:string",
+
+    "result": { "id": "minecraft:crossbow", "components": { "tilted:skin": 68 } }
+}

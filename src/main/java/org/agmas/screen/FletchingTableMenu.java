@@ -47,10 +47,37 @@ public class FletchingTableMenu extends AbstractContainerMenu {
         this.access = access;
         selectedScope.set(0);
         selectedBarrel.set(0);
+
+        //? if >=1.21.2 {
         this.addStandardInventorySlots(inventory, 8, 84);
+        //? } else {
+        /*// requires manual slot insertion pre 1.21.2
+
+        // inventory
+        for (int row = 0; row < 3; ++row) {
+            for (int col = 0; col < 9; ++col) {
+                this.addSlot(new Slot(
+                        inventory,
+                        col + row * 9 + 9,
+                        8 + col * 18,
+                        84 + row * 18
+                ));
+            }
+        }
+
+        // hotbar
+        for (int col = 0; col < 9; ++col) {
+            this.addSlot(new Slot(
+                    inventory,
+                    col,
+                    8 + col * 18,
+                    142
+            ));
+        }
+        *///? }
+
         this.addDataSlot(selectedBarrel);
         this.addDataSlot(selectedScope);
-
     }
 
     @Override
@@ -93,7 +120,12 @@ public class FletchingTableMenu extends AbstractContainerMenu {
             Item item = stack.getItem();
             clicked = stack.copy();
             if (slotIndex == 1) {
+                //? if >=1.21.5 {
                 item.onCraftedBy(stack, player);
+                //? } else {
+                /*item.onCraftedBy(stack, player.level(), player);
+                *///? }
+
                 if (!this.moveItemStackTo(stack, 2, 38, true)) {
                     return ItemStack.EMPTY;
                 }

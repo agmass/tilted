@@ -8,8 +8,14 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
  *///? } else {
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 //? }
+//? if < 1.21.4 {
+/*import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
+import org.agmas.client.plugins.CrossbowSkinModelPlugin;
+*///? }
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+//? if >=1.21.6 {
 import net.fabricmc.fabric.api.client.rendering.v1.RenderStateDataKey;
+//? }
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -39,8 +45,10 @@ public class TiltedClient implements ClientModInitializer {
 	public static boolean scope = false;
 	public static boolean transCrosshair = false;
 	public static float adsZoom = 1;
+	//? if >=1.21.6 {
 	public static RenderStateDataKey<Integer> leaningStateDataKey = RenderStateDataKey.create(()->"leaning");
 	public static RenderStateDataKey<Float> leaningAgeStateDataKey = RenderStateDataKey.create(()->"leaningAge");
+	//? }
 	public static Vec3 previousLeanCamPos = null;
 	public static KeyMapping leanLeft;
 	public static KeyMapping leanRight;
@@ -50,6 +58,10 @@ public class TiltedClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		bootstrapKeys();
 		bootstrapEvents();
+
+		//? if < 1.21.4 {
+		/*ModelLoadingPlugin.register(new CrossbowSkinModelPlugin());
+		*///? }
 
 		MenuScreens.register(ModMenuTypes.FLETCHING_TABLE, FletchingTableScreen::new);
 	}
@@ -68,7 +80,7 @@ public class TiltedClient implements ClientModInitializer {
 				Tilted.of("tilted")
 		);
 		//? } else {
-		/*String CATEGORY = KeyMapping.CATEGORY_MOVEMENT;
+		/*String CATEGORY = "key.categories.tilted";
 		*///? }
 		enableCrossbowFocusMode = registerKeyMapping(
 				new KeyMapping(

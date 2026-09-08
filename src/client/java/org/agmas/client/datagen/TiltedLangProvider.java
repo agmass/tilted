@@ -20,7 +20,7 @@ import net.minecraft.core.HolderLookup;
 import org.agmas.ModBlocks;
 import org.agmas.ModItems;
 
-import java.util.concurrent.CompletableFuture;
+import java.polyfill.concurrent.CompletableFuture;
 
 public class TiltedLangProvider extends FabricLanguageProvider {
     public TiltedLangProvider(FabricPackOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {

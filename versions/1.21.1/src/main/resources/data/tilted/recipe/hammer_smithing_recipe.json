@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smithing_transform",
+
+    "template": { "item": "tilted:hammer_smithing_template" },
+    "base": { "item": "minecraft:crossbow" },
+    "addition": { "item": "minecraft:string" },
+
+    "result": { "id": "minecraft:crossbow", "components": { "tilted:skin": 46 } }
+}
