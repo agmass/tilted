@@ -3,8 +3,8 @@ package org.agmas.mixin;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 //? if >26.1 {
-/*import net.minecraft.references.BlockItemId;
-*///? }
+import net.minecraft.references.BlockItemId;
+//? }
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -36,7 +36,7 @@ public abstract class OverrideFletchingTableMixin {
     }
     *///? } else if <=26.1 {
     
-    @Shadow
+    /*@Shadow
     private static Block register(String id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties) {
         throw new UnsupportedOperationException("Implemented via mixin");
     }
@@ -48,8 +48,8 @@ public abstract class OverrideFletchingTableMixin {
         }
         return original.call(id, properties);
     }
-    //?} else {
-    /*@WrapMethod(method = "register(Lnet/minecraft/references/BlockItemId;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)Lnet/minecraft/world/level/block/Block;")
+    *///?} else {
+    @WrapMethod(method = "register(Lnet/minecraft/references/BlockItemId;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)Lnet/minecraft/world/level/block/Block;")
     private static Block registerFletchingTable(BlockItemId id, BlockBehaviour.Properties properties, Operation<Block> original) {
         // jank jank jank sahur
         if (id.block().identifier().getPath().equals("fletching_table")) {
@@ -57,6 +57,6 @@ public abstract class OverrideFletchingTableMixin {
         }
         return original.call(id, properties);
     }
-    *///? }
+    //? }
 
 }

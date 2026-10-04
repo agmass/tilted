@@ -36,7 +36,7 @@ public abstract class CameraMixin {
 	protected abstract void move(float forwards, float up, float right);
 
 	//? if >=26.1 {
-	/*@Inject(method = "calculateFov", at = @At("TAIL"), cancellable = true)
+	@Inject(method = "calculateFov", at = @At("TAIL"), cancellable = true)
 	private void changeFovWithADS(float partialTicks, CallbackInfoReturnable<Float> cir) {
 		float value = cir.getReturnValue();
 		if (TiltedClient.adsTicks > 0) {
@@ -54,19 +54,19 @@ public abstract class CameraMixin {
 		TiltedClient.previousLeanCamPos = pos;
 		move((float) Mth.lerp(partialTicks,TiltedClient.previousLeanCamPos.x,pos.x), (float) Mth.lerp(partialTicks,TiltedClient.previousLeanCamPos.y,pos.y), (float) Mth.lerp(partialTicks,TiltedClient.previousLeanCamPos.z,pos.z));
 	}
-	 *///? } else {
-	@WrapMethod(method = "setup")
+	 //? } else {
+	/*@WrapMethod(method = "setup")
 	//? if >=1.21.11 {
 	private void init(Level level, Entity entity, boolean bl, boolean bl2, float f, Operation<Void> original) {
 	//? } else {
-	/*private void init(BlockGetter level, Entity entity, boolean bl, boolean bl2, float f, Operation<Void> original) {
-		*///? }
+	/^private void init(BlockGetter level, Entity entity, boolean bl, boolean bl2, float f, Operation<Void> original) {
+		^///? }
 		original.call(level,entity,bl,bl2,f);
 		Vec3 pos = Leaning.lean(((Camera) (Object)this),f);
 		TiltedClient.previousLeanCamPos = pos;
 		move((float) Mth.lerp(f,TiltedClient.previousLeanCamPos.x,pos.x), (float) Mth.lerp(f,TiltedClient.previousLeanCamPos.y,pos.y), (float) Mth.lerp(f,TiltedClient.previousLeanCamPos.z,pos.z));
 	}
-	//? }
+	*///? }
 
 
 }

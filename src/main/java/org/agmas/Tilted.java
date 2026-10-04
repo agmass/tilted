@@ -2,9 +2,7 @@ package org.agmas;
 
 import net.fabricmc.api.ModInitializer;
 
-//? if <26.3 {
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
-//? }
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 //? if >=1.21.11 {
@@ -76,13 +74,13 @@ public class Tilted implements ModInitializer {
 		LOGGER.info("I HATE https://modrinth.com/user/Elysieon!!! IF YOU SEE THIS MESSAGE MAKE SURE TO SEND MALICE AND DESPAIR TO https://www.youtube.com/@Elysieon!!! And you too powercyphe");
 
 		//? if >=26.1 {
-		/*PayloadTypeRegistry.serverboundPlay().register(ServerboundLeanPacket.TYPE, ServerboundLeanPacket.CODEC);
+		PayloadTypeRegistry.serverboundPlay().register(ServerboundLeanPacket.TYPE, ServerboundLeanPacket.CODEC);
 		PayloadTypeRegistry.serverboundPlay().register(ServerboundADSPacket.TYPE, ServerboundADSPacket.CODEC);
-		*///? } else {
-		PayloadTypeRegistry.playC2S().register(ServerboundLeanPacket.TYPE, ServerboundLeanPacket.CODEC);
+		//? } else {
+		/*PayloadTypeRegistry.playC2S().register(ServerboundLeanPacket.TYPE, ServerboundLeanPacket.CODEC);
 		PayloadTypeRegistry.playC2S().register(ServerboundADSPacket.TYPE, ServerboundADSPacket.CODEC);
 
-		//? }
+		*///? }
 
 		ServerPlayNetworking.registerGlobalReceiver(ServerboundLeanPacket.TYPE, ((payload, context) -> {
 			context.player().setAttached(ModAttachments.LEANING_DIRECTION, payload.leaning());
@@ -91,7 +89,7 @@ public class Tilted implements ModInitializer {
 			context.player().setAttached(ModAttachments.IS_AIMING, payload.isAdsing());
 		}));
 
-		//? if <26.3 {
+
 		LootTableEvents.MODIFY_DROPS.register(((key, tableBuilder, source) -> {
 			if (key.unwrapKey().isPresent()) {
 				if (TRIAL_CHAMBER_TABLES.contains(key.unwrapKey().get())) {
@@ -101,6 +99,5 @@ public class Tilted implements ModInitializer {
 				}
 			}
 		}));
-		//? }
 	}
 }

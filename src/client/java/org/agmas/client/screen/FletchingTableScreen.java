@@ -2,10 +2,10 @@ package org.agmas.client.screen;
 
 import net.minecraft.client.Minecraft;
 //? if >=26.1 {
-/*import net.minecraft.client.gui.GuiGraphicsExtractor;
-*///? } else {
-import net.minecraft.client.gui.GuiGraphics;
-//? }
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+//? } else {
+/*import net.minecraft.client.gui.GuiGraphics;
+*///? }
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -51,27 +51,27 @@ public class FletchingTableScreen extends AbstractContainerScreen<FletchingTable
     }
 
     //? if >=26.1 {
-    /*@Override
+    @Override
     public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
         super.extractBackground(graphics, mouseX, mouseY, a);
-    *///? } else {
-    @Override
+    //? } else {
+    /*@Override
     protected void renderBg(GuiGraphics graphics, float f, int i, int j) {
-    //? }
+    *///? }
         graphics.blit(RenderPipelines.GUI_TEXTURED, CONTAINER_TEXTURE, this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, BACKGROUND_TEXTURE_WIDTH, BACKGROUND_TEXTURE_HEIGHT);
     }
 
 
     //? if >=26.1 {
-    /*@Override
+    @Override
     public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
         super.extractRenderState(graphics, mouseX, mouseY, a);
-    *///? } else {
+    //? } else {
 
-    @Override
+    /*@Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float a) {
         super.render(graphics, mouseX, mouseY, a);
-    //? }
+    *///? }
         if (menu.crossbowInSlot) {
             int i = 0;
             Runnable renderTooltipLast = null;
@@ -90,12 +90,12 @@ public class FletchingTableScreen extends AbstractContainerScreen<FletchingTable
                                 Component.literal("Spread Multiplier: " + value.uncertaintyMultiplier + "x").withColor(Color.GRAY.getRGB()))
                         );
                         //? if <=1.21.11 {
-                        graphics.renderTooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null);
-                        //? } else if <26.3 {
+                        /*graphics.renderTooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null);
+                        *///? } else if <26.3 {
                         /*graphics.tooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null);
                         *///? } else {
-                        /*graphics.tooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null,false);
-                        *///? }
+                        graphics.tooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null,false);
+                        //? }
                     };
                 }
                 i += ATTACHMENT_WIDTH;
@@ -119,12 +119,12 @@ public class FletchingTableScreen extends AbstractContainerScreen<FletchingTable
                                 Component.literal("Time to ADS: " + (value.ticksToADS/20f) + "s").withColor(Color.GRAY.getRGB())
                         ));
                         //? if <=1.21.11 {
-                        graphics.renderTooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null);
-                        //? } else if <26.3 {
+                        /*graphics.renderTooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null);
+                        *///? } else if <26.3 {
                         /*graphics.tooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null);
                         *///? } else {
-                        /*graphics.tooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null,false);
-                        *///? }
+                        graphics.tooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null,false);
+                        //? }
                     };
                 }
                 i += ATTACHMENT_WIDTH;
@@ -174,10 +174,10 @@ public class FletchingTableScreen extends AbstractContainerScreen<FletchingTable
     }
 
     //? if >=26.1 {
-    /*public void selectionBackground(GuiGraphicsExtractor graphics, int x, int y, boolean selected, int mx, int my) {
-    *///? } else {
-    public void selectionBackground(GuiGraphics graphics, int x, int y, boolean selected, int mx, int my) {
-    //? }
+    public void selectionBackground(GuiGraphicsExtractor graphics, int x, int y, boolean selected, int mx, int my) {
+    //? } else {
+    /*public void selectionBackground(GuiGraphics graphics, int x, int y, boolean selected, int mx, int my) {
+    *///? }
         //? if >=1.21.11 {
         Identifier sprite;
         //? } else {

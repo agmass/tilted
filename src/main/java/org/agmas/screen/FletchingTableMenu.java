@@ -4,8 +4,8 @@ import net.fabricmc.loader.impl.util.log.Log;
 import net.fabricmc.loader.impl.util.log.LogCategory;
 import net.minecraft.core.component.DataComponentType;
 //? if >=26.3 {
-/*import net.minecraft.util.Prediction;
-*///? }
+import net.minecraft.util.Prediction;
+//? }
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -127,10 +127,10 @@ public class FletchingTableMenu extends AbstractContainerMenu {
             slot.onTake(player, stack);
             if (slotIndex == 1) {
                 //? if >=26.3 {
-                /*player.drop(stack, false, Prediction.PREDICTED);
-                *///? } else {
-                player.drop(stack, false);
-                //? }
+                player.drop(stack, false, Prediction.PREDICTED);
+                //? } else {
+                /*player.drop(stack, false);
+                *///? }
             }
 
             this.broadcastChanges();

@@ -66,6 +66,7 @@ processResources {
 
 	def minecraft = stonecutter.current.version
 	def injection = "$minecraft" as String
+	injection = "~" + injection
 
 	filesMatching("fabric.mod.json") {
 		expand "version": version,

@@ -1,12 +1,12 @@
 package org.agmas.client.datagen;
 
 //? if >=26.1 {
-/*import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
-*///? } else {
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+//? } else {
+/*import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-//? }
+*///? }
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -21,17 +21,17 @@ import java.util.concurrent.CompletableFuture;
 public class ModTagProviders {
 
     //? if >=26.1 {
-    /*public static final class ItemTags extends FabricTagsProvider.ItemTagsProvider {
-    *///?} else {
-    public static final class ItemTags extends FabricTagProvider.ItemTagProvider {
-    //? }
+    public static final class ItemTags extends FabricTagsProvider.ItemTagsProvider {
+    //?} else {
+    /*public static final class ItemTags extends FabricTagProvider.ItemTagProvider {
+    *///? }
 
 
         //? if >=26.1 {
-        /*public ItemTags(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
-        *///?} else {
-        public ItemTags(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
-        //? }
+        public ItemTags(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+        //?} else {
+        /*public ItemTags(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+        *///? }
             super(output, registriesFuture);
         }
 
@@ -42,12 +42,12 @@ public class ModTagProviders {
 
         public void add(Item item,TagKey<Item> tag) {
             //? if >=26.2 {
-            /*tag(tag)
+            tag(tag)
                     .add(ResourceKey.create(Registries.ITEM, BuiltInRegistries.ITEM.getKey(item)));
-            *///? } else {
-            valueLookupBuilder(tag)
+            //? } else {
+            /*valueLookupBuilder(tag)
                     .add(item);
-             //? }
+             *///? }
         }
 
     }

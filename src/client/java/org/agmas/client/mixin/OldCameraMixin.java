@@ -29,7 +29,7 @@ public abstract class OldCameraMixin {
 		}
 	}
 	*///? } else if =1.21.11 {
-    @Inject(method = "getFov", at = @At("TAIL"), cancellable = true)
+    /*@Inject(method = "getFov", at = @At("TAIL"), cancellable = true)
     private void changeFovWithADS(Camera camera, float f, boolean bl, CallbackInfoReturnable<Float> cir) {
         float value = cir.getReturnValue();
         if (TiltedClient.adsTicks > 0) {
@@ -40,7 +40,7 @@ public abstract class OldCameraMixin {
             }
         }
     }
-    //? }
+    *///? }
 
 
 }
