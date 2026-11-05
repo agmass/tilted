@@ -1,10 +1,10 @@
 package org.agmas;
 
 //? if >=26.1 {
-/*import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
-*///? } else {
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-//? }
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+//? } else {
+/*import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+*///? }
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -94,10 +94,10 @@ public class ModItems {
     public static void init() {
         //? if >=26.1 {
         
-        /*CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS)
-         *///? } else {
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS)
-        //? }
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS)
+         //? } else {
+        /*ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS)
+        *///? }
                 .register((creativeTab) -> {
                     creativeTab.accept(ModItems.ICE_SMITHING_TEMPLATE);
                     creativeTab.accept(ModItems.CARNIVORA_SMITHING_TEMPLATE);

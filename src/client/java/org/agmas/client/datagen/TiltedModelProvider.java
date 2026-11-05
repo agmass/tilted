@@ -32,14 +32,14 @@ import java.io.IOException;
 
 public class TiltedModelProvider extends FabricModelProvider {
     //? if >=26.1 {
-    /*public TiltedModelProvider(FabricPackOutput output) {
+    public TiltedModelProvider(FabricPackOutput output) {
         super(output);
     }
-    *///? } else {
-    public TiltedModelProvider(FabricDataOutput output) {
+    //? } else {
+    /*public TiltedModelProvider(FabricDataOutput output) {
         super(output);
     }
-    //? }
+    *///? }
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator) {

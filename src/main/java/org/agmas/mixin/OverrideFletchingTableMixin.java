@@ -54,7 +54,7 @@ public abstract class OverrideFletchingTableMixin {
     }
     *///? } else if <=26.1 {
     
-    @Shadow
+    /*@Shadow
     private static Block register(String id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties) {
         throw new UnsupportedOperationException("Implemented via mixin");
     }

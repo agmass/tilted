@@ -11,10 +11,10 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.Gui;
 //? if <26.1 {
-import net.minecraft.client.gui.GuiGraphics;
-//? } else {
-/*import net.minecraft.client.gui.GuiGraphicsExtractor;
-*///? }
+/*import net.minecraft.client.gui.GuiGraphics;
+*///? } else {
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+//? }
 //? if <1.21.11 {
 /*import net.minecraft.resources.ResourceLocation;
  *///? }
@@ -42,10 +42,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.awt.*;
 
 //? if <=26.1 {
-@Mixin(value = Gui.class, priority = 20)
-//? } else {
-/*@Mixin(value = Hud.class, priority = 20)
-*///? }
+/*@Mixin(value = Gui.class, priority = 20)
+*///? } else {
+@Mixin(value = Hud.class, priority = 20)
+//? }
 public class GreenCrosshairMixin {
 	//? if <1.21.2 {
 	/*@WrapOperation(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;blitSprite(Lnet/minecraft/resources/ResourceLocation;IIII)V"), method = "renderCrosshair")
@@ -111,7 +111,7 @@ public class GreenCrosshairMixin {
 	*///? } else {
 	@Inject(at = @At("HEAD"), method = "renderCameraOverlays")
 	private void scope(GuiGraphics graphics, DeltaTracker deltaTracker, CallbackInfo ci) {
-	//? }
+	*///? }
 		if (TiltedClient.scope && TiltedClient.adsTicks > 3) {
 			float srcWidth = (float)Math.min(graphics.guiWidth(), graphics.guiHeight());
 			float ticks = TiltedClient.adsTicks;

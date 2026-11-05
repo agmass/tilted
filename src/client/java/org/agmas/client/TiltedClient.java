@@ -33,8 +33,8 @@ import org.agmas.client.screen.FletchingTableScreen;
 import org.agmas.network.ServerboundADSPacket;
 import org.agmas.network.ServerboundLeanPacket;
 //? if <26.3 {
-import org.lwjgl.glfw.GLFW;
-//? }
+/*import org.lwjgl.glfw.GLFW;
+*///? }
 
 public class TiltedClient implements ClientModInitializer {
 	public static boolean crossbowFocusMode = false;
@@ -74,10 +74,10 @@ public class TiltedClient implements ClientModInitializer {
 
 	public static KeyMapping registerKeyMapping(KeyMapping keyMapping) {
 		//? if >=26.1 {
-		/*return KeyMappingHelper.registerKeyMapping(keyMapping);
-		*///? } else {
-		return KeyBindingHelper.registerKeyBinding(keyMapping);
-		//? }
+		return KeyMappingHelper.registerKeyMapping(keyMapping);
+		//? } else {
+		/*return KeyBindingHelper.registerKeyBinding(keyMapping);
+		*///? }
 	}
 
 	public static void bootstrapKeys() {
@@ -92,36 +92,36 @@ public class TiltedClient implements ClientModInitializer {
 				new KeyMapping(
 						"key.tilted.crossbowFocusMode", // The translation key for the key mapping.
 						//? if <26.3 {
-						InputConstants.Type.KEYSYM,
+						/*InputConstants.Type.KEYSYM,
 						GLFW.GLFW_KEY_J,
-						//? } else {
-						/*InputConstants.Type.KEYBOARD,
+						*///? } else {
+						InputConstants.Type.KEYBOARD,
 						InputConstants.KEY_J,
-						*///? }
+						//? }
 						CATEGORY // The category of the mapping.
 				));
 		leanLeft = registerKeyMapping(
 				new KeyMapping(
 						"key.tilted.leanLeft", // The translation key for the key mapping.
 						//? if <26.3 {
-						InputConstants.Type.KEYSYM,
+						/*InputConstants.Type.KEYSYM,
 						GLFW.GLFW_KEY_E,
-						//? } else {
-						/*InputConstants.Type.KEYBOARD,
+						*///? } else {
+						InputConstants.Type.KEYBOARD,
 						InputConstants.KEY_E,
-						*///? }
+						//? }
 						CATEGORY // The category of the mapping.
 				));
 		leanRight = registerKeyMapping(
 				new KeyMapping(
 						"key.tilted.leanRight", // The translation key for the key mapping.
 						//? if <26.3 {
-						InputConstants.Type.KEYSYM,
+						/*InputConstants.Type.KEYSYM,
 						GLFW.GLFW_KEY_Q,
-						//? } else {
-						/*InputConstants.Type.KEYBOARD,
+						*///? } else {
+						InputConstants.Type.KEYBOARD,
 						InputConstants.KEY_Q,
-						*///? }
+						//? }
 						CATEGORY // The category of the mapping.
 				));
 	}

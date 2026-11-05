@@ -82,13 +82,13 @@ public class Tilted implements ModInitializer {
 		LOGGER.info("I HATE https://modrinth.com/user/Elysieon!!! IF YOU SEE THIS MESSAGE MAKE SURE TO SEND MALICE AND DESPAIR TO https://www.youtube.com/@Elysieon!!! And you too powercyphe");
 
 		//? if >=26.1 {
-		/*PayloadTypeRegistry.serverboundPlay().register(ServerboundLeanPacket.TYPE, ServerboundLeanPacket.CODEC);
+		PayloadTypeRegistry.serverboundPlay().register(ServerboundLeanPacket.TYPE, ServerboundLeanPacket.CODEC);
 		PayloadTypeRegistry.serverboundPlay().register(ServerboundADSPacket.TYPE, ServerboundADSPacket.CODEC);
-		*///? } else {
-		PayloadTypeRegistry.playC2S().register(ServerboundLeanPacket.TYPE, ServerboundLeanPacket.CODEC);
+		//? } else {
+		/*PayloadTypeRegistry.playC2S().register(ServerboundLeanPacket.TYPE, ServerboundLeanPacket.CODEC);
 		PayloadTypeRegistry.playC2S().register(ServerboundADSPacket.TYPE, ServerboundADSPacket.CODEC);
 
-		//? }
+		*///? }
 
 		ServerPlayNetworking.registerGlobalReceiver(ServerboundLeanPacket.TYPE, ((payload, context) -> {
 			context.player().setAttached(ModAttachments.LEANING_DIRECTION, payload.leaning());
@@ -117,6 +117,5 @@ public class Tilted implements ModInitializer {
 				}
 			}
 		}));
-		//? }
 	}
 }
