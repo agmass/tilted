@@ -56,7 +56,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:" + property("fabric_api_version") as String
 
 	// to test mod compat
-	{ def prop = findProperty("compat_enchancement_version") as String; if (prop != null) modImplementation prop }
+	{ def prop = findProperty("compat_enchancement_version") as String; if (prop != null) modRuntimeOnly prop }
 }
 
 processResources {
@@ -64,11 +64,22 @@ processResources {
 	inputs.property "version", version
 
 	def minecraft = stonecutter.current.version
-	def injection = "$minecraft" as String
+	def injection = "~$minecraft" as String
+	if ("$minecraft" == "26.4") {
+		injection = ">=26.3"
+	}
+
 
 	filesMatching("fabric.mod.json") {
 		expand "version": version,
-				"minecraft_version": injection
+				"mc_version": injection
+	}
+}
+
+stonecutter {
+	replacements.string(stonecutter.current.parsed >= '26.4', '!renderToGui') {
+		replace 'RenderPipelines.GUI_TEXTURED', 'GuiPipeline.TEXTURED'
+		replace 'net.minecraft.client.renderer.RenderPipelines', 'net.minecraft.client.gui.GuiPipeline'
 	}
 }
 

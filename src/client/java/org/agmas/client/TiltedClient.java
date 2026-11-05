@@ -17,7 +17,10 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.RenderStateDataKey;
 //? }
 import net.minecraft.client.KeyMapping;
+//? if >=26.4
+//import net.minecraft.client.core.registries.BuiltInClientRegistries;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
@@ -63,7 +66,10 @@ public class TiltedClient implements ClientModInitializer {
 		/*ModelLoadingPlugin.register(new CrossbowSkinModelPlugin());
 		*///? }
 
-		MenuScreens.register(ModMenuTypes.FLETCHING_TABLE, FletchingTableScreen::new);
+		MenuScreens.register(
+				//? if >=26.4
+				//BuiltInClientRegistries.MENU_SCREEN,
+				ModMenuTypes.FLETCHING_TABLE, FletchingTableScreen::new);
 	}
 
 	public static KeyMapping registerKeyMapping(KeyMapping keyMapping) {

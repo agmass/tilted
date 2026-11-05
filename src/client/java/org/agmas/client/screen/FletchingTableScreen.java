@@ -8,13 +8,11 @@ import net.minecraft.client.gui.GuiGraphics;
 //? }
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
-//? if >= 1.21.6 {
+//? if >= 1.21.6
 import net.minecraft.client.renderer.RenderPipelines;
-//? }
 import net.minecraft.network.chat.Component;
-//? if >=1.21.9 {
+//? if >=1.21.9
 import net.minecraft.client.input.MouseButtonEvent;
-//? }
 //? if >=1.21.11 {
 import net.minecraft.resources.Identifier;
 //? } else {
@@ -53,7 +51,12 @@ public class FletchingTableScreen extends AbstractContainerScreen<FletchingTable
         super(menu, inventory, title);
     }
 
-    //? if >=26.1 {
+
+    //? if >=26.4 {
+    /*@Override
+    public void extractBackground(GuiGraphicsExtractor graphics) {
+        super.extractBackground(graphics);
+    *///? } else if >=26.1 {
     /*@Override
     public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
         super.extractBackground(graphics, mouseX, mouseY, a);
@@ -68,8 +71,13 @@ public class FletchingTableScreen extends AbstractContainerScreen<FletchingTable
         *///? }
     }
 
-
-    //? if >=26.1 {
+    //? if >=26.4 {
+    /*@Override
+    public void extractRenderState(GuiGraphicsExtractor graphics) {
+        super.extractRenderState(graphics);
+        int mouseX = graphics.mouseX();
+        int mouseY = graphics.mouseY();
+    *///? } else if >=26.1 {
     /*@Override
     public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
         super.extractRenderState(graphics, mouseX, mouseY, a);

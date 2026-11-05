@@ -7,8 +7,7 @@
     "LeaningArrowsMixin",
     "OverrideFletchingTableMixin",
     "SilentArrowMixin",
-    "SmithingMenuMixin",
-    "TemporaryLootTableMixin"
+    "SmithingMenuMixin"
   ],
   "injectors": {
     "defaultRequire": 1

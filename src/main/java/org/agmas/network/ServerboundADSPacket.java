@@ -1,16 +1,15 @@
 package org.agmas.network;
 
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 //? if >=1.21.11 {
 import net.minecraft.resources.Identifier;
 //? } else {
 /*import net.minecraft.resources.ResourceLocation;
 *///? }
 import org.agmas.Tilted;
-
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 public record ServerboundADSPacket(boolean isAdsing) implements CustomPacketPayload {
     //? if >=1.21.11 {
     public static final Identifier TOGGLE_ADS = Tilted.of("toggle_ads");

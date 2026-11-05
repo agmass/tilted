@@ -346,10 +346,7 @@ public class TiltedModelProvider extends FabricModelProvider {
         /*String pathDir = "../../src/main/resources/assets/tilted/models/item/" + skinName;
         *///? }
 
-        boolean mkdirModelsSuccessful = new File(pathDir).mkdirs();
-
-        if (mkdirModelsSuccessful) Tilted.LOGGER.info("successfully created recipe folder at <" + pathDir + ">");
-        else Tilted.LOGGER.error("cannot create recipe folder at <" + pathDir + ">");
+        new File(pathDir).mkdirs();
 
         try (FileWriter writer = new FileWriter(pathDir + "/crossbow" + suffix + ".json")) {
             writer.write(

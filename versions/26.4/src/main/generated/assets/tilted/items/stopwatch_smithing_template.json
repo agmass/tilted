@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "tilted:item/stopwatch_smithing_template"
+  }
+}

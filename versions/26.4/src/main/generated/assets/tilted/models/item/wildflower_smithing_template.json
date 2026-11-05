@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tilted:item/wildflower_smithing_template"
+  }
+}

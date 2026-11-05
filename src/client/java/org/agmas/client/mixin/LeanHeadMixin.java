@@ -54,7 +54,12 @@ public abstract class LeanHeadMixin {
 			if (lean != null) {
 				lean = lean.intValue();
 				if (lean != 0) {
-					float delta = Mth.clamp((state.ageInTicks - state.getData(TiltedClient.leaningAgeStateDataKey).floatValue()) / 2.0f, 0f, 1f);
+					float delta =
+							//? if <26.4
+							Mth.clamp
+							//? if >=26.4
+							//Mth.clampedLerp
+							((state.ageInTicks - state.getData(TiltedClient.leaningAgeStateDataKey).floatValue()) / 2.0f, 0f, 1f);
 
 					float progress = EasingType.OUT_SINE.apply(delta);
 

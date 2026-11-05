@@ -79,10 +79,8 @@ public class TiltedRecipeProvider extends FabricRecipeProvider {
     /*@Override
     public void buildRecipes(RecipeOutput exporter) {
     *///? }
-        boolean mkdirRecipesSuccessful = new File(PATH_DIR_RECIPES).mkdirs();
 
-        if (mkdirRecipesSuccessful) Tilted.LOGGER.info("successfully created recipe folder at <" + PATH_DIR_RECIPES + ">");
-        else Tilted.LOGGER.error("cannot create recipe folder at <" + PATH_DIR_RECIPES + ">");
+        new File(PATH_DIR_RECIPES).mkdirs();
 
         writeCrossbowSmithingRecipes(SkinsComponent.                   ANCIENT, ModItems.                   ANCIENT_SMITHING_TEMPLATE, Items.        STRING);
         writeCrossbowSmithingRecipes(SkinsComponent.                 ANTIVIRUS, ModItems.                 ANTIVIRUS_SMITHING_TEMPLATE, Items.        STRING);
@@ -147,7 +145,7 @@ public class TiltedRecipeProvider extends FabricRecipeProvider {
         writeCrossbowSmithingRecipes(SkinsComponent.                     WRATH, ModItems.                     WRATH_SMITHING_TEMPLATE, Items.        STRING);
         writeCrossbowSmithingRecipes(SkinsComponent.                    WRITER, ModItems.                    WRITER_SMITHING_TEMPLATE, Items.        STRING);
 
-        //? if >= 26.3 {
+        //? if >= 26.2 {
 
         /*writeCrossbowSmithingRecipes(SkinsComponent.                  BLACKICE, ModItems.                       ICE_SMITHING_TEMPLATE, Items.DYE.    black());
         writeCrossbowSmithingRecipes(SkinsComponent.                   BLUEICE, ModItems.                       ICE_SMITHING_TEMPLATE, Items.DYE.     blue());

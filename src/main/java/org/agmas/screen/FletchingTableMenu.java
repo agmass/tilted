@@ -42,7 +42,10 @@ public class FletchingTableMenu extends AbstractContainerMenu {
                 slotsChanged(this);
             }
         };
-        inputSlot = addSlot(new Slot(container,0,20, 33));
+        inputSlot = addSlot(new Slot(container,0,20, 33
+                //? if >=26.4
+                //, Slot.Section.INPUT
+        ));
 
         this.access = access;
         selectedScope.set(0);

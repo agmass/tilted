@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "tilted:item/missing_texture_smithing_template"
+  }
+}
