@@ -9,15 +9,20 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.MappedRegistry;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.agmas.block.FletchingTableBlock;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+
+import java.util.function.Function;
 
 @Mixin(Blocks.class)
 public abstract class OverrideFletchingTableMixin {
 
     @Mixin(MappedRegistry.class)
     public static class OverrideIntrusiveHolderMixin {
-        //? if <1.21.2
+        //? if <1.21.2 {
         @WrapMethod(method = "createIntrusiveHolder")
         private <T> Holder.Reference<T> registerFletchingTable(T object, Operation<Holder.Reference<T>> original) {
             if (object instanceof net.minecraft.world.level.block.FletchingTableBlock) {
@@ -64,7 +69,13 @@ public abstract class OverrideFletchingTableMixin {
         return original.call(id, properties);
     }
     *///? } else {
-    /*@WrapMethod(method = "register(Lnet/minecraft/references/BlockItemId;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)Lnet/minecraft/world/level/block/Block;")
+    /*
+    @Shadow
+    public static Block register(ResourceKey<Block> id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties) {
+        throw new UnsupportedOperationException("Implemented via mixin");
+    }
+
+    @WrapMethod(method = "register(Lnet/minecraft/references/BlockItemId;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)Lnet/minecraft/world/level/block/Block;")
     private static Block registerFletchingTable(BlockItemId id, BlockBehaviour.Properties properties, Operation<Block> original) {
         // jank jank jank sahur
         if (id.block().identifier().getPath().equals("fletching_table")) {
