@@ -16,10 +16,10 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 //? if >=1.21.11 {
-import net.minecraft.resources.Identifier;
-//? } else {
-/*import net.minecraft.resources.ResourceLocation;
-*///? }
+/*import net.minecraft.resources.Identifier;
+*///? } else {
+import net.minecraft.resources.ResourceLocation;
+//? }
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -27,8 +27,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.data.recipes.RecipeOutput;
 
 //? if >=1.21.2 {
-import net.minecraft.data.recipes.RecipeProvider;
-//? }
+/*import net.minecraft.data.recipes.RecipeProvider;
+*///? }
 
 //? if >=26.1 {
 /*import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
@@ -56,29 +56,29 @@ public class TiltedRecipeProvider extends FabricRecipeProvider {
 
     //? if >=1.21.2 {
 
-     @Override
+     /*@Override
 
     //? if >=26.3 {
 
-    /*public RecipeProvider createRecipeProvider(HolderLookup.Provider registries, BootstrapContext<Recipe<?>> recipes, BootstrapContext<Advancement> advancements) {
+    /^public RecipeProvider createRecipeProvider(HolderLookup.Provider registries, BootstrapContext<Recipe<?>> recipes, BootstrapContext<Advancement> advancements) {
         return new RecipeProvider(recipes, advancements) {
 
-    *///? } else {
+    ^///? } else {
 
     public RecipeProvider createRecipeProvider(HolderLookup.Provider registryLookup, RecipeOutput exporter) {
         return new RecipeProvider(registryLookup, exporter) {
 
     //? }
 
-    //? }
+    *///? }
 
     //? if >=1.21.2 {
-    @Override
-    public void buildRecipes() {
-    //? } else {
     /*@Override
+    public void buildRecipes() {
+    *///? } else {
+    @Override
     public void buildRecipes(RecipeOutput exporter) {
-    *///? }
+    //? }
 
         new File(PATH_DIR_RECIPES).mkdirs();
 
@@ -182,12 +182,12 @@ public class TiltedRecipeProvider extends FabricRecipeProvider {
 
     private void writeCrossbowSmithingRecipes(SkinsComponent skin, Item template, Item addition) {
         //? if >=1.21.11 {
-        Identifier templateLoc = BuiltInRegistries.ITEM.getKey(template);
+        /*Identifier templateLoc = BuiltInRegistries.ITEM.getKey(template);
         Identifier additionLoc = BuiltInRegistries.ITEM.getKey(addition);
-        //? } else {
-        /*ResourceLocation templateLoc = BuiltInRegistries.ITEM.getKey(template);
+        *///? } else {
+        ResourceLocation templateLoc = BuiltInRegistries.ITEM.getKey(template);
         ResourceLocation additionLoc = BuiltInRegistries.ITEM.getKey(addition);
-        *///? }
+        //? }
 
         int skinEnum = skin.ordinal();
         String skinName = skin.name();
@@ -198,7 +198,7 @@ public class TiltedRecipeProvider extends FabricRecipeProvider {
         try (FileWriter writer = new FileWriter(PATH_DIR_RECIPES + "/" + skinName.toLowerCase() + "_smithing_recipe.json")) {
             writer.write(
                 //? if >= 1.21.4 {
-                """
+                /*"""
                 {
                     "type": "minecraft:smithing_transform",
             
@@ -209,8 +209,8 @@ public class TiltedRecipeProvider extends FabricRecipeProvider {
                     "result": { "id": "minecraft:crossbow", "components": { "tilted:skin": %d } }
                 }
                 """
-                //? } else {
-                /*"""
+                *///? } else {
+                """
                 {
                     "type": "minecraft:smithing_transform",
             
@@ -221,7 +221,7 @@ public class TiltedRecipeProvider extends FabricRecipeProvider {
                     "result": { "id": "minecraft:crossbow", "components": { "tilted:skin": %d } }
                 }
                 """
-                *///? }
+                //? }
             .formatted(templatePath, additionPath, skinEnum));
         } catch (IOException e) {
             e.printStackTrace();
@@ -229,9 +229,9 @@ public class TiltedRecipeProvider extends FabricRecipeProvider {
     }
 
             //? if >=1.21.2 {
-        };
+        /*};
     }
-    //? }
+    *///? }
 
     @Override
     public @NotNull String getName() {

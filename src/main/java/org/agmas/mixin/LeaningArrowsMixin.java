@@ -16,10 +16,10 @@ import net.minecraft.world.level.Level;
 import org.agmas.Tilted;
 import org.spongepowered.asm.mixin.Shadow;
 //? if >=1.21.2 {
-import net.minecraft.world.InteractionResult;
-//? } else {
-/*import net.minecraft.world.InteractionResultHolder;
-*///? }
+/*import net.minecraft.world.InteractionResult;
+*///? } else {
+import net.minecraft.world.InteractionResultHolder;
+//? }
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -45,24 +45,24 @@ import java.util.List;
 public abstract class LeaningArrowsMixin extends Item {
 
     //? if >=1.21.2 {
-        @Shadow
-        public abstract InteractionResult use(Level level, Player player, InteractionHand hand);
-    //? } else {
         /*@Shadow
+        public abstract InteractionResult use(Level level, Player player, InteractionHand hand);
+    *///? } else {
+        @Shadow
         public abstract InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand);
-    *///? }
+    //? }
 
     public LeaningArrowsMixin(Properties properties) {
         super(properties);
     }
 
     //? if >=1.21.2 {
-    @WrapOperation(method = "shootProjectile", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/Entity;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V"))
+    /*@WrapOperation(method = "shootProjectile", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/Entity;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V"))
     public void silencedCrossbow(Level instance, Entity except, double x, double y, double z, SoundEvent sound, SoundSource source, float volume, float pitch, Operation<Void> original, @Local(ordinal = 0, argsOnly = true) LivingEntity shooter) {
-    //? } else {
-    /*@WrapOperation(method = "shootProjectile", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/player/Player;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V"))
+    *///? } else {
+    @WrapOperation(method = "shootProjectile", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/player/Player;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V"))
     public void silencedCrossbow(Level instance, Player except, double x, double y, double z, SoundEvent sound, SoundSource source, float volume, float pitch, Operation<Void> original, @Local(ordinal = 0, argsOnly = true) LivingEntity shooter) {
-    *///? }
+    //? }
         ItemStack stack = null;
         if (shooter.getOffhandItem().is(ModTags.CROSSBOWS)) {
             stack = shooter.getOffhandItem();
@@ -136,7 +136,7 @@ public abstract class LeaningArrowsMixin extends Item {
     }
 
     //? if < 1.21.2 {
-    /*@Inject(method = "appendHoverText", at = @At("HEAD"))
+    @Inject(method = "appendHoverText", at = @At("HEAD"))
     public void addText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag, CallbackInfo ci) {
         if (itemStack.is(ModTags.CROSSBOWS)) {
             if (itemStack.has(ModComponents.BARREL_COMPONENT)) {
@@ -151,5 +151,5 @@ public abstract class LeaningArrowsMixin extends Item {
             }
         }
     }
-    *///? }
+    //? }
 }

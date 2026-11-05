@@ -17,16 +17,12 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.agmas.Tilted;
 import org.agmas.screen.FletchingTableMenu;
 //? if >=1.21.11 {
-import org.jspecify.annotations.Nullable;
-//? } else {
-/*import org.jetbrains.annotations.Nullable;
-*///? }
-
-//? if =1.21.1 {
-/*public class FletchingTableBlock extends net.minecraft.world.level.block.FletchingTableBlock {
+/*import org.jspecify.annotations.Nullable;
 *///? } else {
-public class FletchingTableBlock extends Block {
+import org.jetbrains.annotations.Nullable;
 //? }
+
+public class FletchingTableBlock extends Block {
     public FletchingTableBlock(Properties properties) {
         super(properties);
     }

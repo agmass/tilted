@@ -43,19 +43,19 @@ public class ModBlocks {
         ResourceKey<Block> blockKey = keyOfBlock(name);
 
         //? if >=1.21.2 {
-        Block block = blockFactory.apply(properties.setId(blockKey));
-        //? } else {
-        /*Block block = blockFactory.apply(properties);
-        *///? }
+        /*Block block = blockFactory.apply(properties.setId(blockKey));
+        *///? } else {
+        Block block = blockFactory.apply(properties);
+        //? }
 
         if (shouldRegisterItem) {
             ResourceKey<Item> itemKey = keyOfItem(name);
 
             //? if >=1.21.2 {
-            BlockItem blockItem = new BlockItem(block, new Item.Properties().setId(itemKey).useBlockDescriptionPrefix());
-            //? } else {
-            /*BlockItem blockItem = new BlockItem(block, new Item.Properties());
-            *///? }
+            /*BlockItem blockItem = new BlockItem(block, new Item.Properties().setId(itemKey).useBlockDescriptionPrefix());
+            *///? } else {
+            BlockItem blockItem = new BlockItem(block, new Item.Properties());
+            //? }
 
             Registry.register(BuiltInRegistries.ITEM, itemKey, blockItem);
         }

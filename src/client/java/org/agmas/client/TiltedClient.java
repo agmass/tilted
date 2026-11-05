@@ -9,13 +9,13 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 //? }
 //? if < 1.21.4 {
-/*import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
+import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import org.agmas.client.plugins.CrossbowSkinModelPlugin;
-*///? }
+//? }
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 //? if >=1.21.6 {
-import net.fabricmc.fabric.api.client.rendering.v1.RenderStateDataKey;
-//? }
+/*import net.fabricmc.fabric.api.client.rendering.v1.RenderStateDataKey;
+*///? }
 import net.minecraft.client.KeyMapping;
 //? if >=26.4
 //import net.minecraft.client.core.registries.BuiltInClientRegistries;
@@ -33,8 +33,8 @@ import org.agmas.client.screen.FletchingTableScreen;
 import org.agmas.network.ServerboundADSPacket;
 import org.agmas.network.ServerboundLeanPacket;
 //? if <26.3 {
-/*import org.lwjgl.glfw.GLFW;
-*///? }
+import org.lwjgl.glfw.GLFW;
+//? }
 
 public class TiltedClient implements ClientModInitializer {
 	public static boolean crossbowFocusMode = false;
@@ -49,9 +49,9 @@ public class TiltedClient implements ClientModInitializer {
 	public static boolean transCrosshair = false;
 	public static float adsZoom = 1;
 	//? if >=1.21.6 {
-	public static RenderStateDataKey<Integer> leaningStateDataKey = RenderStateDataKey.create(()->"leaning");
+	/*public static RenderStateDataKey<Integer> leaningStateDataKey = RenderStateDataKey.create(()->"leaning");
 	public static RenderStateDataKey<Float> leaningAgeStateDataKey = RenderStateDataKey.create(()->"leaningAge");
-	//? }
+	*///? }
 	public static Vec3 previousLeanCamPos = null;
 	public static KeyMapping leanLeft;
 	public static KeyMapping leanRight;
@@ -63,8 +63,8 @@ public class TiltedClient implements ClientModInitializer {
 		bootstrapEvents();
 
 		//? if < 1.21.4 {
-		/*ModelLoadingPlugin.register(new CrossbowSkinModelPlugin());
-		*///? }
+		ModelLoadingPlugin.register(new CrossbowSkinModelPlugin());
+		//? }
 
 		MenuScreens.register(
 				//? if >=26.4
@@ -74,54 +74,54 @@ public class TiltedClient implements ClientModInitializer {
 
 	public static KeyMapping registerKeyMapping(KeyMapping keyMapping) {
 		//? if >=26.1 {
-		return KeyMappingHelper.registerKeyMapping(keyMapping);
-		//? } else {
-		/*return KeyBindingHelper.registerKeyBinding(keyMapping);
-		*///? }
+		/*return KeyMappingHelper.registerKeyMapping(keyMapping);
+		*///? } else {
+		return KeyBindingHelper.registerKeyBinding(keyMapping);
+		//? }
 	}
 
 	public static void bootstrapKeys() {
 		//? if >=1.21.9 {
-		KeyMapping.Category CATEGORY = KeyMapping.Category.register(
+		/*KeyMapping.Category CATEGORY = KeyMapping.Category.register(
 				Tilted.of("tilted")
 		);
-		//? } else {
-		/*String CATEGORY = "key.categories.tilted";
-		*///? }
+		*///? } else {
+		String CATEGORY = "key.categories.tilted";
+		//? }
 		enableCrossbowFocusMode = registerKeyMapping(
 				new KeyMapping(
 						"key.tilted.crossbowFocusMode", // The translation key for the key mapping.
 						//? if <26.3 {
-						/*InputConstants.Type.KEYSYM,
+						InputConstants.Type.KEYSYM,
 						GLFW.GLFW_KEY_J,
-						*///? } else {
-						InputConstants.Type.KEYBOARD,
+						//? } else {
+						/*InputConstants.Type.KEYBOARD,
 						InputConstants.KEY_J,
-						//? }
+						*///? }
 						CATEGORY // The category of the mapping.
 				));
 		leanLeft = registerKeyMapping(
 				new KeyMapping(
 						"key.tilted.leanLeft", // The translation key for the key mapping.
 						//? if <26.3 {
-						/*InputConstants.Type.KEYSYM,
+						InputConstants.Type.KEYSYM,
 						GLFW.GLFW_KEY_E,
-						*///? } else {
-						InputConstants.Type.KEYBOARD,
+						//? } else {
+						/*InputConstants.Type.KEYBOARD,
 						InputConstants.KEY_E,
-						//? }
+						*///? }
 						CATEGORY // The category of the mapping.
 				));
 		leanRight = registerKeyMapping(
 				new KeyMapping(
 						"key.tilted.leanRight", // The translation key for the key mapping.
 						//? if <26.3 {
-						/*InputConstants.Type.KEYSYM,
+						InputConstants.Type.KEYSYM,
 						GLFW.GLFW_KEY_Q,
-						*///? } else {
-						InputConstants.Type.KEYBOARD,
+						//? } else {
+						/*InputConstants.Type.KEYBOARD,
 						InputConstants.KEY_Q,
-						//? }
+						*///? }
 						CATEGORY // The category of the mapping.
 				));
 	}

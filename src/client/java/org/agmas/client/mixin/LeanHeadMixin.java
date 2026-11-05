@@ -5,21 +5,21 @@ package org.agmas.client.mixin;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 //? if >= 1.21.11 {
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
+/*import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.util.EasingType;
 import net.minecraft.world.entity.Avatar;
 import org.agmas.client.TiltedClient;
-//? } else if >= 1.21.6 {
+*///? } else if >= 1.21.6 {
 /*import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.client.model.HumanoidModel;
 import org.agmas.client.TiltedClient;
 *///? } else {
-/*import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.LivingEntity;
 import org.agmas.Tilted;
 import org.agmas.client.duck.AvatarAccessor;
 import org.agmas.client.polyfill.PF_Mth;
-*///? }
+//? }
 import net.minecraft.util.Mth;
 import org.agmas.ModAttachments;
 import org.spongepowered.asm.mixin.Final;
@@ -38,16 +38,16 @@ public abstract class LeanHeadMixin {
 
 	//? if < 1.21.6 {
 
-	/*@Unique
+	@Unique
 	private int tilted$leanPrev = 0;
 
 	@Unique
 	private float tilted$ageInTicksUnleanStart = 0;
 
-	*///? }
+	//? }
 
 	//? if >=1.21.11 {
-	@Inject(method = "setupAnim(Lnet/minecraft/client/renderer/entity/state/HumanoidRenderState;)V",at = @At("TAIL"))
+	/*@Inject(method = "setupAnim(Lnet/minecraft/client/renderer/entity/state/HumanoidRenderState;)V",at = @At("TAIL"))
 	public void leanHead(HumanoidRenderState state, CallbackInfo ci) {
 		if (state instanceof AvatarRenderState) {
 			var lean = state.getData(TiltedClient.leaningStateDataKey);
@@ -69,7 +69,7 @@ public abstract class LeanHeadMixin {
 			}
 		}
 	}
-	//? } else >=1.21.6 {
+	*///? } else >=1.21.6 {
 	/*@Inject(method = "setupAnim(Lnet/minecraft/client/renderer/entity/state/HumanoidRenderState;)V",at = @At("TAIL"))
 	public void leanHead(HumanoidRenderState state, CallbackInfo ci) {
 		if (state instanceof HumanoidRenderState) {
@@ -88,7 +88,7 @@ public abstract class LeanHeadMixin {
 		}
 	}
 	*///? } else {
-	/*@Inject(method = "setupAnim(Lnet/minecraft/world/entity/LivingEntity;FFFFF)V", at = @At("TAIL"))
+	@Inject(method = "setupAnim(Lnet/minecraft/world/entity/LivingEntity;FFFFF)V", at = @At("TAIL"))
 	public void leanHead(LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, CallbackInfo ci) {
 		if (!(entity instanceof AvatarAccessor)) return;
 
@@ -122,5 +122,5 @@ public abstract class LeanHeadMixin {
 			tilted$leanPrev = lean;
 		}
 	}
-	*///? }
+	//? }
 }

@@ -31,7 +31,7 @@ public abstract class SwapDownInputsMixin {
 
 	//? if <1.21.9 {
 
-	/*@Shadow
+	@Shadow
 	public abstract void setDown(boolean down);
 
 	@Inject(method = "click", at = @At("TAIL"))
@@ -57,7 +57,7 @@ public abstract class SwapDownInputsMixin {
 			}
 		}
 	}
-	*///? }
+	//? }
 	@WrapMethod(method = "consumeClick")
 	public boolean dontRunIfSameAsLeanKey(Operation<Boolean> original) {
 		if (TiltedClient.crossbowFocusMode) {

@@ -6,19 +6,19 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 //? if >=1.21.11 {
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-//? } else {
-/*import net.minecraft.world.entity.projectile.AbstractArrow;
-*///? }
+/*import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
+*///? } else {
+import net.minecraft.world.entity.projectile.AbstractArrow;
+//? }
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 //? if >=1.21.11 {
-@Mixin(value = AbstractArrow.class)
-//? } else {
 /*@Mixin(value = AbstractArrow.class)
-*///? }
+*///? } else {
+@Mixin(value = AbstractArrow.class)
+//? }
 public abstract class SilentArrowMixin extends Entity {
     public SilentArrowMixin(EntityType<?> type, Level level) {
         super(type, level);
@@ -26,10 +26,10 @@ public abstract class SilentArrowMixin extends Entity {
 
 
     //? if >=1.21.11 {
-    @WrapOperation(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/arrow/AbstractArrow;isCritArrow()Z"))
-    //? } else {
-    /*@WrapOperation(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/AbstractArrow;isCritArrow()Z"))
-    *///? }
+    /*@WrapOperation(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/arrow/AbstractArrow;isCritArrow()Z"))
+    *///? } else {
+    @WrapOperation(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/AbstractArrow;isCritArrow()Z"))
+    //? }
     public boolean noTrail(AbstractArrow instance, Operation<Boolean> original) {
         if (instance.isSilent()) {
             return false;
@@ -39,10 +39,10 @@ public abstract class SilentArrowMixin extends Entity {
 
 
     //? if >=1.21.11 {
-    @WrapOperation(method = "onHitBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/arrow/AbstractArrow;playSound(Lnet/minecraft/sounds/SoundEvent;FF)V"))
-     //? } else {
-    /*@WrapOperation(method = "onHitBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/AbstractArrow;playSound(Lnet/minecraft/sounds/SoundEvent;FF)V"))
-    *///? }
+    /*@WrapOperation(method = "onHitBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/arrow/AbstractArrow;playSound(Lnet/minecraft/sounds/SoundEvent;FF)V"))
+     *///? } else {
+    @WrapOperation(method = "onHitBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/AbstractArrow;playSound(Lnet/minecraft/sounds/SoundEvent;FF)V"))
+    //? }
     public void noSoundBlock(AbstractArrow instance, SoundEvent soundEvent, float vol, float pitch, Operation<Void> original) {
         if (instance.isSilent()) {
             return;
@@ -50,10 +50,10 @@ public abstract class SilentArrowMixin extends Entity {
        original.call(instance,soundEvent,vol,pitch);
     }
     //? if >=1.21.11 {
-    @WrapOperation(method = "onHitEntity", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/arrow/AbstractArrow;playSound(Lnet/minecraft/sounds/SoundEvent;FF)V"))
-    //? } else {
-    /*@WrapOperation(method = "onHitEntity", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/AbstractArrow;playSound(Lnet/minecraft/sounds/SoundEvent;FF)V"))
-    *///? }
+    /*@WrapOperation(method = "onHitEntity", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/arrow/AbstractArrow;playSound(Lnet/minecraft/sounds/SoundEvent;FF)V"))
+    *///? } else {
+    @WrapOperation(method = "onHitEntity", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/AbstractArrow;playSound(Lnet/minecraft/sounds/SoundEvent;FF)V"))
+    //? }
     public void noSoundEntity(AbstractArrow instance, SoundEvent soundEvent, float vol, float pitch, Operation<Void> original) {
         if (instance.isSilent()) {
             return;

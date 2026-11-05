@@ -3,12 +3,12 @@
 package org.agmas.client.mixin;
 
 //? if >=1.21.11 {
-import net.minecraft.client.renderer.entity.player.AvatarRenderer;
+/*import net.minecraft.client.renderer.entity.player.AvatarRenderer;
 import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import net.minecraft.world.entity.Avatar;
-//? } else {
-/*import net.minecraft.client.model.HumanoidModel;
-*///? }
+*///? } else {
+import net.minecraft.client.model.HumanoidModel;
+//? }
 import net.minecraft.world.entity.player.Player;
 import org.agmas.ModAttachments;
 import org.agmas.client.TiltedClient;
@@ -20,10 +20,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 //? if >=1.21.11 {
-@Mixin(value = Avatar.class)
-//? } else {
-/*@Mixin(value = Player.class)
-*///? }
+/*@Mixin(value = Avatar.class)
+*///? } else {
+@Mixin(value = Player.class)
+//? }
 public abstract class AvatarMixin implements AvatarAccessor {
 	@Unique
 	public float startedLeaningAge = 0;

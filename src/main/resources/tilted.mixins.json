@@ -6,6 +6,7 @@
     "AddToItemTooltipMixin",
     "LeaningArrowsMixin",
     "OverrideFletchingTableMixin",
+    "OverrideFletchingTableMixin$OverrideIntrusiveHolderMixin",
     "SilentArrowMixin",
     "SmithingMenuMixin"
   ],

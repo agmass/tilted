@@ -4,13 +4,13 @@ package org.agmas.client.mixin;
 import net.minecraft.client.Camera;
 import net.minecraft.client.renderer.GameRenderer;
 //? if >=1.21.11 {
-import net.minecraft.util.EasingType;
-//?}
+/*import net.minecraft.util.EasingType;
+*///?}
 import net.minecraft.util.Mth;
 import org.agmas.client.TiltedClient;
 //? if < 1.21.2 {
-/*import org.agmas.client.polyfill.PF_Mth;
-*///? }
+import org.agmas.client.polyfill.PF_Mth;
+//? }
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(value = GameRenderer.class)
 public abstract class OldCameraMixin {
 	//? if <1.21.2 {
-	/*@Inject(method = "getFov", at = @At("TAIL"), cancellable = true)
+	@Inject(method = "getFov", at = @At("TAIL"), cancellable = true)
 	private void changeFovWithADS(Camera camera, float partialTick, boolean useFovSetting, CallbackInfoReturnable<Double> cir) {
 		double value = cir.getReturnValue();
 		if (TiltedClient.adsTicks > 0) {
@@ -30,7 +30,7 @@ public abstract class OldCameraMixin {
 			}
 		}
 	}
-	*///? } else if <1.21.11 {
+	//? } else if <1.21.11 {
 
 	/*@Inject(method = "getFov", at = @At("TAIL"), cancellable = true)
 	private void changeFovWithADS(Camera camera, float f, boolean bl, CallbackInfoReturnable<Float> cir) {
