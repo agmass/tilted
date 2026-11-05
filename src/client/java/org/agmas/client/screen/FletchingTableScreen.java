@@ -8,11 +8,11 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 *///? }
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
+//? if >= 1.21.6
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
-//? if >=1.21.9 {
+//? if >=1.21.9
 import net.minecraft.client.input.MouseButtonEvent;
-//? }
 //? if >=1.21.11 {
 import net.minecraft.resources.Identifier;
 //? } else {
@@ -22,6 +22,7 @@ import net.minecraft.world.entity.player.Inventory;
 import org.agmas.Tilted;
 import org.agmas.attachments.BarrelAttachment;
 import org.agmas.attachments.ScopeAttachment;
+import org.agmas.client.mixin.GuiGraphicsMixin;
 import org.agmas.screen.FletchingTableMenu;
 
 import java.awt.*;
@@ -50,20 +51,34 @@ public class FletchingTableScreen extends AbstractContainerScreen<FletchingTable
         super(menu, inventory, title);
     }
 
-    //? if >=26.1 {
-    @Override
+
+    //? if >=26.4 {
+    /*@Override
+    public void extractBackground(GuiGraphicsExtractor graphics) {
+        super.extractBackground(graphics);
+    *///? } else if >=26.1 {
+    /*@Override
     public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
         super.extractBackground(graphics, mouseX, mouseY, a);
     //? } else {
     /*@Override
     protected void renderBg(GuiGraphics graphics, float f, int i, int j) {
-    *///? }
+    //? }
+        //? if >= 1.21.6 {
         graphics.blit(RenderPipelines.GUI_TEXTURED, CONTAINER_TEXTURE, this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, BACKGROUND_TEXTURE_WIDTH, BACKGROUND_TEXTURE_HEIGHT);
+        //? } else {
+        /*graphics.blit(CONTAINER_TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
+        *///? }
     }
 
-
-    //? if >=26.1 {
-    @Override
+    //? if >=26.4 {
+    /*@Override
+    public void extractRenderState(GuiGraphicsExtractor graphics) {
+        super.extractRenderState(graphics);
+        int mouseX = graphics.mouseX();
+        int mouseY = graphics.mouseY();
+    *///? } else if >=26.1 {
+    /*@Override
     public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
         super.extractRenderState(graphics, mouseX, mouseY, a);
     //? } else {
@@ -80,7 +95,13 @@ public class FletchingTableScreen extends AbstractContainerScreen<FletchingTable
                 int posY = topPos + ATTACHMENT_LIST_ROW_Y;
                 int posX = leftPos + ATTACHMENT_LIST_START_X + i;
                 selectionBackground(graphics,posX,posY,menu.selectedBarrel.get()==value.ordinal(),mouseX,mouseY);
+
+                //? if >= 1.21.6 {
                 graphics.blit(RenderPipelines.GUI_TEXTURED, Tilted.of("textures/gui/container/" + value.name().toLowerCase() + ".png"), posX,posY,0,0,16,16,16,16);
+                //? } else {
+                /*graphics.blit(Tilted.of("textures/gui/container/" + value.name().toLowerCase() + ".png"), posX, posY, 0, 0, 16, 16, 16, 16);
+                *///? }
+
                 if (isSelected(posX,posY,mouseX,mouseY)) {
                     renderTooltipLast = () -> {
                         AttachmentTooltipComponent attachmentTooltipComponent = new AttachmentTooltipComponent(List.of(
@@ -89,9 +110,12 @@ public class FletchingTableScreen extends AbstractContainerScreen<FletchingTable
                                 Component.literal(""),
                                 Component.literal("Spread Multiplier: " + value.uncertaintyMultiplier + "x").withColor(Color.GRAY.getRGB()))
                         );
-                        //? if <=1.21.11 {
-                        /*graphics.renderTooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null);
-                        *///? } else if <26.3 {
+
+                        //? if <1.21.6 {
+                        /*((GuiGraphicsMixin)graphics).tilted$renderTooltipInternal(Minecraft.getInstance().font, List.of(attachmentTooltipComponent), mouseX, mouseY, DefaultTooltipPositioner.INSTANCE);
+                        *///? } else if <=1.21.11 {
+                        graphics.renderTooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null);
+                        //? } else if <26.3 {
                         /*graphics.tooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null);
                         *///? } else {
                         graphics.tooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null,false);
@@ -106,7 +130,13 @@ public class FletchingTableScreen extends AbstractContainerScreen<FletchingTable
                 int posY = topPos + ATTACHMENT_LIST_ROW_Y + (ATTACHMENT_LIST_ROW_HEIGHT);
                 int posX = leftPos + ATTACHMENT_LIST_START_X + i;
                 selectionBackground(graphics,posX,posY,menu.selectedScope.get()==value.ordinal(),mouseX,mouseY);
+
+                //? if >= 1.21.6 {
                 graphics.blit(RenderPipelines.GUI_TEXTURED, Tilted.of("textures/gui/container/" + value.name().toLowerCase() + ".png"), posX,posY,0,0,16,16,16,16);
+                //? } else {
+                /*graphics.blit(Tilted.of("textures/gui/container/" + value.name().toLowerCase() + ".png"), posX, posY, 0, 0, 16, 16, 16, 16);
+                *///? }
+
                 if (isSelected(posX,posY,mouseX,mouseY)) {
                     renderTooltipLast = () -> {
                         float zoomRounded = (1/value.zoom);
@@ -118,9 +148,11 @@ public class FletchingTableScreen extends AbstractContainerScreen<FletchingTable
                                 Component.literal("Zoom: " + zoomRounded + "x").withColor(Color.GRAY.getRGB()),
                                 Component.literal("Time to ADS: " + (value.ticksToADS/20f) + "s").withColor(Color.GRAY.getRGB())
                         ));
-                        //? if <=1.21.11 {
-                        /*graphics.renderTooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null);
-                        *///? } else if <26.3 {
+                        //? if <1.21.6 {
+                        /*((GuiGraphicsMixin)graphics).tilted$renderTooltipInternal(Minecraft.getInstance().font, List.of(attachmentTooltipComponent), mouseX, mouseY, DefaultTooltipPositioner.INSTANCE);
+                        *///? } else if <=1.21.11 {
+                        graphics.renderTooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null);
+                        //? } else if <26.3 {
                         /*graphics.tooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null);
                         *///? } else {
                         graphics.tooltip(Minecraft.getInstance().font, List.of(attachmentTooltipComponent),mouseX,mouseY, DefaultTooltipPositioner.INSTANCE,null,false);
@@ -190,7 +222,12 @@ public class FletchingTableScreen extends AbstractContainerScreen<FletchingTable
         } else {
             sprite = ATTACHMENT_SPRITE;
         }
+
+        //? if >= 1.21.6 {
         graphics.blit(RenderPipelines.GUI_TEXTURED, sprite, x, y, 0, 0, 16, 16, 16, 16);
+        //? } else {
+        /*graphics.blit(sprite, x, y, 0, 0, 16, 16, 16, 16);
+        *///? }
     }
 
     public boolean isSelected(int x, int y, int mx, int my) {

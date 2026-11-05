@@ -2,6 +2,12 @@ package org.agmas;
 
 import net.fabricmc.api.ModInitializer;
 
+//? if <1.21.6 {
+/*import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+*///? }
+
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -71,6 +77,8 @@ public class Tilted implements ModInitializer {
 		ModBlocks.init();
 		ModTags.init();
 
+		// damm why tho
+		// We have beef........... -agmas
 		LOGGER.info("I HATE https://modrinth.com/user/Elysieon!!! IF YOU SEE THIS MESSAGE MAKE SURE TO SEND MALICE AND DESPAIR TO https://www.youtube.com/@Elysieon!!! And you too powercyphe");
 
 		//? if >=26.1 {
@@ -89,7 +97,17 @@ public class Tilted implements ModInitializer {
 			context.player().setAttached(ModAttachments.IS_AIMING, payload.isAdsing());
 		}));
 
-
+		//? if <1.21.6 {
+		/*LootTableEvents.MODIFY.register(((key, tableBuilder, source, provider) -> {
+			if (provider.lookup(key.registryKey()).isPresent()) {
+				tableBuilder.withPool(
+					LootPool.lootPool()
+						.add(LootItem.lootTableItem(ModBlocks.CRATE.asItem()))
+						.when(LootItemRandomChanceCondition.randomChance(0.4f /^ (0-1) 2 out of 5 (0-4) ^/))
+				);
+			}
+		}));
+		*///? } else {
 		LootTableEvents.MODIFY_DROPS.register(((key, tableBuilder, source) -> {
 			if (key.unwrapKey().isPresent()) {
 				if (TRIAL_CHAMBER_TABLES.contains(key.unwrapKey().get())) {

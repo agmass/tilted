@@ -1,11 +1,9 @@
 {
-  "model": {
-      "type": "minecraft:composite",
-      "models": [
-{"type": "minecraft:model",
-"model":"tilted:item/blueice/crossbow_pulling_2"
-},
-{"type": "minecraft:model",
-"model": "tilted:item/brimstone_3"}]
+    "model": {
+        "type": "minecraft:composite",
+        "models": [
+            { "type": "minecraft:model", "model": "tilted:item/blueice/crossbow_pulling_2" },
+            { "type": "minecraft:model", "model": "tilted:item/brimstone_3" }
+        ]
     }
 }

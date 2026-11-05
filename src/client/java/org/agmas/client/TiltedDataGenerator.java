@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import org.agmas.client.datagen.ModTagProviders;
 import org.agmas.client.datagen.TiltedModelProvider;
+import org.agmas.client.datagen.TiltedRecipeProvider;
 
 public class TiltedDataGenerator implements DataGeneratorEntrypoint {
 	@Override
@@ -19,6 +20,7 @@ public class TiltedDataGenerator implements DataGeneratorEntrypoint {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 		pack.addProvider(TiltedModelProvider::new);
 		pack.addProvider(ModTagProviders.ItemTags::new);
+		pack.addProvider(TiltedRecipeProvider::new);
 		//pack.addProvider(TiltedLangProvider::new);
 	}
 }

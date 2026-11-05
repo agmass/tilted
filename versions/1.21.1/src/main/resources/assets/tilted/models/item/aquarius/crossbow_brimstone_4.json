@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:item/crossbow",
+    "textures": {
+        "layer0": "tilted:item/aquarius/crossbow_pulling_2",
+        "layer1": "tilted:item/brimstone_4"
+    }
+}

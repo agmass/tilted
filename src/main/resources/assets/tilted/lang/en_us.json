@@ -22,6 +22,7 @@
   "tilted.barrels.none.desc": "No barrel attachment.",
   "block.tilted.crate": "Crate",
   "enchantment.tilted.magazine": "Magazine",
+  "key.categories.tilted": "Tilted",
   "key.category.tilted.tilted": "Tilted",
   "key.tilted.leanLeft": "Lean Left",
   "key.tilted.leanRight": "Lean Right",

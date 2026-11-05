@@ -1,11 +1,9 @@
 {
-  "model": {
-      "type": "minecraft:composite",
-      "models": [
-{"type": "minecraft:model",
-"model":"tilted:item/specialops/crossbow_pulling_2"
-},
-{"type": "minecraft:model",
-"model": "tilted:item/scatter"}]
+    "model": {
+        "type": "minecraft:composite",
+        "models": [
+            { "type": "minecraft:model", "model": "tilted:item/specialops/crossbow_pulling_2" },
+            { "type": "minecraft:model", "model": "tilted:item/scatter" }
+        ]
     }
 }

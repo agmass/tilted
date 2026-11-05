@@ -1,6 +1,8 @@
-
-
 package org.agmas.client.mixin;
+
+//? if >= 1.21.6 {
+
+
 
 //? if >=1.21.11 {
 
@@ -9,7 +11,7 @@ import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import net.minecraft.world.entity.Avatar;
 //? } else {
 /*import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
-*///? }
+ *///? }
 import net.fabricmc.fabric.api.client.rendering.v1.RenderStateDataKey;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.client.renderer.item.ItemModelResolver;
@@ -26,13 +28,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = AvatarRenderer.class)
 //? } else {
 /*@Mixin(value = HumanoidMobRenderer.class)
-*///? }
+ *///? }
 public abstract class ExtractRenderStateMixin {
 
 	//? if >=1.21.11 {
 	@Inject(method = "extractRenderState(Lnet/minecraft/world/entity/Avatar;Lnet/minecraft/client/renderer/entity/state/AvatarRenderState;F)V", at = @At("HEAD"))
 	public void tiltedAnimations(Avatar entity, AvatarRenderState state, float partialTicks, CallbackInfo ci) {
-	//? } else {
+		//? } else {
 	/*@Inject(method = "extractHumanoidRenderState", at = @At("TAIL"))
 	private static void a(LivingEntity entity, HumanoidRenderState state, float f, ItemModelResolver itemModelResolver, CallbackInfo ci) {
 	*///? }
@@ -49,3 +51,13 @@ public abstract class ExtractRenderStateMixin {
 		}
 	}
 }
+
+//? } else {
+
+/*import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
+import org.spongepowered.asm.mixin.Mixin;
+
+@Mixin(value = HumanoidMobRenderer.class)
+public abstract class ExtractRenderStateMixin {}
+
+*///? }

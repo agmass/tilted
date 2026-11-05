@@ -4,14 +4,23 @@ import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 //? if >=26.1 {
-import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
- //? } else {
-/*import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+/*import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
+ *///? } else {
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+//? }
+//? if < 1.21.4 {
+/*import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
+import org.agmas.client.plugins.CrossbowSkinModelPlugin;
 *///? }
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+//? if >=1.21.6 {
 import net.fabricmc.fabric.api.client.rendering.v1.RenderStateDataKey;
+//? }
 import net.minecraft.client.KeyMapping;
+//? if >=26.4
+//import net.minecraft.client.core.registries.BuiltInClientRegistries;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
@@ -39,8 +48,10 @@ public class TiltedClient implements ClientModInitializer {
 	public static boolean scope = false;
 	public static boolean transCrosshair = false;
 	public static float adsZoom = 1;
+	//? if >=1.21.6 {
 	public static RenderStateDataKey<Integer> leaningStateDataKey = RenderStateDataKey.create(()->"leaning");
 	public static RenderStateDataKey<Float> leaningAgeStateDataKey = RenderStateDataKey.create(()->"leaningAge");
+	//? }
 	public static Vec3 previousLeanCamPos = null;
 	public static KeyMapping leanLeft;
 	public static KeyMapping leanRight;
@@ -51,7 +62,14 @@ public class TiltedClient implements ClientModInitializer {
 		bootstrapKeys();
 		bootstrapEvents();
 
-		MenuScreens.register(ModMenuTypes.FLETCHING_TABLE, FletchingTableScreen::new);
+		//? if < 1.21.4 {
+		/*ModelLoadingPlugin.register(new CrossbowSkinModelPlugin());
+		*///? }
+
+		MenuScreens.register(
+				//? if >=26.4
+				//BuiltInClientRegistries.MENU_SCREEN,
+				ModMenuTypes.FLETCHING_TABLE, FletchingTableScreen::new);
 	}
 
 	public static KeyMapping registerKeyMapping(KeyMapping keyMapping) {
@@ -68,7 +86,7 @@ public class TiltedClient implements ClientModInitializer {
 				Tilted.of("tilted")
 		);
 		//? } else {
-		/*String CATEGORY = KeyMapping.CATEGORY_MOVEMENT;
+		/*String CATEGORY = "key.categories.tilted";
 		*///? }
 		enableCrossbowFocusMode = registerKeyMapping(
 				new KeyMapping(
