@@ -17,6 +17,7 @@ public abstract class OverrideFletchingTableMixin {
 
     @Mixin(MappedRegistry.class)
     public static class OverrideIntrusiveHolderMixin {
+        //? if <1.21.2
         @WrapMethod(method = "createIntrusiveHolder")
         private <T> Holder.Reference<T> registerFletchingTable(T object, Operation<Holder.Reference<T>> original) {
             if (object instanceof net.minecraft.world.level.block.FletchingTableBlock) {
@@ -24,6 +25,7 @@ public abstract class OverrideFletchingTableMixin {
             }
             return original.call(object);
         }
+        //? }
     }
     //? if <1.21.2 {
 
