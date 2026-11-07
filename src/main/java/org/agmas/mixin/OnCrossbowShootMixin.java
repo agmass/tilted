@@ -10,30 +10,24 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import org.agmas.Tilted;
 import org.spongepowered.asm.mixin.Shadow;
 //? if >=1.21.2 {
-/*import net.minecraft.world.InteractionResult;
-*///? } else {
-import net.minecraft.world.InteractionResultHolder;
-//? }
-import net.minecraft.world.entity.Entity;
+import net.minecraft.world.InteractionResult;
+//? } else {
+/*import net.minecraft.world.InteractionResultHolder;
+*///? }
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.Level;
 import org.agmas.ModAttachments;
 import org.agmas.ModComponents;
 import org.agmas.ModTags;
 import org.agmas.attachments.BarrelAttachment;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -42,27 +36,27 @@ import java.awt.*;
 import java.util.List;
 
 @Mixin(value = CrossbowItem.class, priority = 3000)
-public abstract class LeaningArrowsMixin extends Item {
+public abstract class OnCrossbowShootMixin extends Item {
 
     //? if >=1.21.2 {
-        /*@Shadow
-        public abstract InteractionResult use(Level level, Player player, InteractionHand hand);
-    *///? } else {
         @Shadow
+        public abstract InteractionResult use(Level level, Player player, InteractionHand hand);
+    //? } else {
+        /*@Shadow
         public abstract InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand);
-    //? }
+    *///? }
 
-    public LeaningArrowsMixin(Properties properties) {
+    public OnCrossbowShootMixin(Properties properties) {
         super(properties);
     }
 
     //? if >=1.21.2 {
-    /*@WrapOperation(method = "shootProjectile", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/Entity;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V"))
+    @WrapOperation(method = "shootProjectile", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/Entity;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V"))
     public void silencedCrossbow(Level instance, Entity except, double x, double y, double z, SoundEvent sound, SoundSource source, float volume, float pitch, Operation<Void> original, @Local(ordinal = 0, argsOnly = true) LivingEntity shooter) {
-    *///? } else {
-    @WrapOperation(method = "shootProjectile", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/player/Player;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V"))
+    //? } else {
+    /*@WrapOperation(method = "shootProjectile", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/player/Player;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V"))
     public void silencedCrossbow(Level instance, Player except, double x, double y, double z, SoundEvent sound, SoundSource source, float volume, float pitch, Operation<Void> original, @Local(ordinal = 0, argsOnly = true) LivingEntity shooter) {
-    //? }
+    *///? }
         ItemStack stack = null;
         if (shooter.getOffhandItem().is(ModTags.CROSSBOWS)) {
             stack = shooter.getOffhandItem();
@@ -96,11 +90,6 @@ public abstract class LeaningArrowsMixin extends Item {
             original.call(source,projectileEntity,index,power,uncertainty,angle,targetOverride);
             return;
         }
-
-        if (source.hasAttached(ModAttachments.IS_AIMING) && source.getAttached(ModAttachments.IS_AIMING).booleanValue()) {
-            powerMulti *= 1.1f;
-        }
-
         if (stack.has(ModComponents.BARREL_COMPONENT)) {
             uncertaintyMulti *= ModComponents.barrel(stack.get(ModComponents.BARREL_COMPONENT)).uncertaintyMultiplier;
             Log.info(LogCategory.GENERAL, uncertaintyMulti+"");
@@ -113,11 +102,6 @@ public abstract class LeaningArrowsMixin extends Item {
         }
 
         original.call(source, projectileEntity,index,power*powerMulti,uncertainty*uncertaintyMulti,angle,targetOverride);
-        if (source.hasAttached(ModAttachments.LEANING_DIRECTION)) {
-            Vector3f shf = new Quaternionf().rotationYXZ((float) (Math.PI - source.getYHeadRot() * (Math.PI / 180F)), (float) (-source.getXRot() * (Math.PI / 180F)), 0.0F)
-                    .transform(new Vector3f((float) (-0.3 * source.getAttached(ModAttachments.LEANING_DIRECTION).intValue()), (float) 0,0));
-            projectileEntity.setPos(projectileEntity.position().x+shf.x,projectileEntity.position().y,projectileEntity.position().z+shf.z);
-        }
     }
     @WrapMethod(method = "getChargeDuration")
     private static int chargeTime(ItemStack crossbow, LivingEntity user, Operation<Integer> original) {
@@ -135,9 +119,9 @@ public abstract class LeaningArrowsMixin extends Item {
         return (int) originalTime;
     }
 
-    //? if < 1.21.2 {
-    @Inject(method = "appendHoverText", at = @At("HEAD"))
-    public void addText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag, CallbackInfo ci) {
+    //? if <1.21.2 {
+    /*@Inject(method = "appendHoverText", at = @At("HEAD"))
+    public void addText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag, CallbackInfo ci) {
         if (itemStack.is(ModTags.CROSSBOWS)) {
             if (itemStack.has(ModComponents.BARREL_COMPONENT)) {
                 list.add(Component.translatable("tilted.barrels." + ModComponents.barrel(itemStack.get(ModComponents.BARREL_COMPONENT)).name().toLowerCase()).withColor(Color.GRAY.getRGB()));
@@ -151,5 +135,5 @@ public abstract class LeaningArrowsMixin extends Item {
             }
         }
     }
-    //? }
+    *///? }
 }

@@ -1,7 +1,7 @@
 package org.agmas.mixin;
 
 //? if >26.1
-//import net.minecraft.references.BlockItemId;
+import net.minecraft.references.BlockItemId;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 
@@ -23,18 +23,18 @@ public abstract class OverrideFletchingTableMixin {
     @Mixin(MappedRegistry.class)
     public static class OverrideIntrusiveHolderMixin {
         //? if <1.21.2 {
-        @WrapMethod(method = "createIntrusiveHolder")
+        /*@WrapMethod(method = "createIntrusiveHolder")
         private <T> Holder.Reference<T> registerFletchingTable(T object, Operation<Holder.Reference<T>> original) {
             if (object instanceof net.minecraft.world.level.block.FletchingTableBlock) {
                 return null;
             }
             return original.call(object);
         }
-        //? }
+        *///? }
     }
     //? if <1.21.2 {
 
-    @WrapMethod(method = "register(Ljava/lang/String;Lnet/minecraft/world/level/block/Block;)Lnet/minecraft/world/level/block/Block;")
+    /*@WrapMethod(method = "register(Ljava/lang/String;Lnet/minecraft/world/level/block/Block;)Lnet/minecraft/world/level/block/Block;")
     private static <T> Block registerFletchingTable(String string, Block block, Operation<Block> original) {
         // jank jank jank sahur... But this time, it's extra sahur. Because the 1.21.1 porter used AI to do this originally, which
         // means I have to rewrite it. Shame. At least they were honest about it so I could rewrite it!
@@ -45,7 +45,7 @@ public abstract class OverrideFletchingTableMixin {
         return original.call(string,block);
     }
 
-    //? } else if <1.21.11 {
+    *///? } else if <1.21.11 {
 
     /*@WrapMethod(method = "register(Lnet/minecraft/resources/ResourceKey;Ljava/util/function/Function;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)Lnet/minecraft/world/level/block/Block;")
     private static Block registerFletchingTable(ResourceKey<Block> resourceKey, Function<BlockBehaviour.Properties, Block> function, BlockBehaviour.Properties properties, Operation<Block> original) {
@@ -69,7 +69,7 @@ public abstract class OverrideFletchingTableMixin {
         return original.call(id, properties);
     }
     *///? } else {
-    /*
+    
     @Shadow
     public static Block register(ResourceKey<Block> id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties) {
         throw new UnsupportedOperationException("Implemented via mixin");
@@ -83,5 +83,5 @@ public abstract class OverrideFletchingTableMixin {
         }
         return original.call(id, properties);
     }
-    *///? }
+    //? }
 }

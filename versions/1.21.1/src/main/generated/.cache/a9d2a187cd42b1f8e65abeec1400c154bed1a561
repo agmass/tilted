@@ -1,4 +1,4 @@
-// 1.21.1	2026-11-05T10:45:29.083961911	Tilted/TiltedModelProvider
+// 1.21.1	2026-11-06T17:14:12.432552472	Tilted/TiltedModelProvider
 d8abdefb60f0e7f694c19eb0b48dc1c5c97047af assets/tilted/models/item/awakened_smithing_template.json
 049efdb6069d76c326080b0b5d27b3e31b49b828 assets/tilted/models/item/specialops_smithing_template.json
 a241192bf51edb823d6f42b79454eba3e7ae6466 assets/tilted/models/item/celestial_smithing_template.json
@@ -50,8 +50,8 @@ c4485f6a5188dd6edc93092ddf807c5a5197884f assets/tilted/models/item/sulfurous_smi
 83e33b2f98b76b0af1a601b5ff7c05ea4eb096a7 assets/tilted/models/item/stopwatch_smithing_template.json
 5367e300a155e39c9140af96511bd0e11b9021f9 assets/tilted/models/item/wildflower_smithing_template.json
 dee20642bc6c5ce8ea3e5d5305d777c40f01510e assets/tilted/models/item/sunset_smithing_template.json
-39ab3cf2dcdf8fd853670582b6589b36c15f76c0 assets/tilted/models/item/hammer_smithing_template.json
 797d121083dba91dc212be3cacafe0d0a8d23706 assets/tilted/models/item/writer_smithing_template.json
+39ab3cf2dcdf8fd853670582b6589b36c15f76c0 assets/tilted/models/item/hammer_smithing_template.json
 89f32874dd58c119e8514f9e219b6b9068035b04 assets/tilted/models/item/wrath_smithing_template.json
 90fb23545b0a5e9f6059d2223e9d7af786e7f816 assets/tilted/models/item/kebab_smithing_template.json
 d77dd98e247818b4004c6fb7a419a5a822acc740 assets/tilted/models/item/willpower_smithing_template.json

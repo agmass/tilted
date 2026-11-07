@@ -13,10 +13,10 @@ import org.agmas.ModTags;
 import org.agmas.Tilted;
 import org.agmas.client.TiltedClient;
 //? if >=1.21.11 {
-/*import org.jspecify.annotations.Nullable;
-*///? } else {
-import org.jetbrains.annotations.Nullable;
-//? }
+import org.jspecify.annotations.Nullable;
+//? } else {
+/*import org.jetbrains.annotations.Nullable;
+*///? }
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -53,7 +53,7 @@ public abstract class InputsMixin {
 	public void runLeansFirst(Operation<Void> original) {
 		if (TiltedClient.crossbowFocusMode) {
 			if (player == null) return;
-			if (player.isHolding((i)->i.is(ModTags.CROSSBOWS))) {
+			if (player.isHolding((i)->i.is(ModTags.AIMABLE))) {
 				TiltedClient.itsNotJoeverUntilItsJoever = true;
 				while (TiltedClient.leanLeft.consumeClick()) {
 					TiltedClient.leaning = (TiltedClient.leaning == -1) ? 0 : -1;

@@ -2,14 +2,14 @@ package org.agmas.client.mixin;
 
 //? if >=1.21.4 {
 
-/*import net.minecraft.client.renderer.item.ItemModelResolver;
+import net.minecraft.client.renderer.item.ItemModelResolver;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
 
 //? if >=1.21.11 {
-/^import net.minecraft.resources.Identifier;
-^///? } else {
-import net.minecraft.resources.ResourceLocation;
-//? }
+import net.minecraft.resources.Identifier;
+//? } else {
+/*import net.minecraft.resources.ResourceLocation;
+*///? }
 
 import net.minecraft.world.item.ItemStack;
 import org.agmas.ModComponents;
@@ -22,10 +22,10 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 public class ChangeCrossbowSkinMixin {
     @ModifyVariable(method = "appendItemLayers", at = @At("STORE"), ordinal = 0)
     //? if >=1.21.11 {
-    /^private Identifier changeSkinModel(Identifier modelId, ItemStackRenderState output, ItemStack item) {
-     ^///? } else {
-    private ResourceLocation changeSkinModel(ResourceLocation modelId, ItemStackRenderState output, ItemStack item) {
-        //? }
+    private Identifier changeSkinModel(Identifier modelId, ItemStackRenderState output, ItemStack item) {
+     //? } else {
+    /*private ResourceLocation changeSkinModel(ResourceLocation modelId, ItemStackRenderState output, ItemStack item) {
+        *///? }
         if (item.has(ModComponents.SKIN_COMPONENT)) {
             Tilted.LOGGER.info(ModComponents.skin(item.get(ModComponents.SKIN_COMPONENT)).name().toLowerCase() +"/"+modelId.getPath());
             return Tilted.of(ModComponents.skin(item.get(ModComponents.SKIN_COMPONENT)).name().toLowerCase() +"/"+modelId.getPath());
@@ -34,9 +34,9 @@ public class ChangeCrossbowSkinMixin {
     }
 }
 
-*///? } else {
+//? } else {
 
-import org.jetbrains.annotations.Nullable;
+/*import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 
@@ -92,4 +92,4 @@ public class ChangeCrossbowSkinMixin {
     }
 }
 
-//? }
+*///? }

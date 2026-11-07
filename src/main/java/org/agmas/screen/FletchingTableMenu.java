@@ -4,8 +4,8 @@ import net.fabricmc.loader.impl.util.log.Log;
 import net.fabricmc.loader.impl.util.log.LogCategory;
 import net.minecraft.core.component.DataComponentType;
 //? if >=26.3 {
-/*import net.minecraft.util.Prediction;
-*///? }
+import net.minecraft.util.Prediction;
+//? }
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -44,7 +44,7 @@ public class FletchingTableMenu extends AbstractContainerMenu {
         };
         inputSlot = addSlot(new Slot(container,0,20, 33
                 //? if >=26.4
-                //, Slot.Section.INPUT
+                , Slot.Section.INPUT
         ));
 
         this.access = access;
@@ -52,9 +52,9 @@ public class FletchingTableMenu extends AbstractContainerMenu {
         selectedBarrel.set(0);
 
         //? if >=1.21.2 {
-        /*this.addStandardInventorySlots(inventory, 8, 84);
-        *///? } else {
-        // requires manual slot insertion pre 1.21.2
+        this.addStandardInventorySlots(inventory, 8, 84);
+        //? } else {
+        /*// requires manual slot insertion pre 1.21.2
 
         // inventory
         for (int row = 0; row < 3; ++row) {
@@ -77,7 +77,7 @@ public class FletchingTableMenu extends AbstractContainerMenu {
                     142
             ));
         }
-        //? }
+        *///? }
 
         this.addDataSlot(selectedBarrel);
         this.addDataSlot(selectedScope);
@@ -124,10 +124,10 @@ public class FletchingTableMenu extends AbstractContainerMenu {
             clicked = stack.copy();
             if (slotIndex == 1) {
                 //? if >=1.21.5 {
-                /*item.onCraftedBy(stack, player);
-                *///? } else {
-                item.onCraftedBy(stack, player.level(), player);
-                //? }
+                item.onCraftedBy(stack, player);
+                //? } else {
+                /*item.onCraftedBy(stack, player.level(), player);
+                *///? }
 
                 if (!this.moveItemStackTo(stack, 2, 38, true)) {
                     return ItemStack.EMPTY;
@@ -162,10 +162,10 @@ public class FletchingTableMenu extends AbstractContainerMenu {
             slot.onTake(player, stack);
             if (slotIndex == 1) {
                 //? if >=26.3 {
-                /*player.drop(stack, false, Prediction.PREDICTED);
-                *///? } else {
-                player.drop(stack, false);
-                //? }
+                player.drop(stack, false, Prediction.PREDICTED);
+                //? } else {
+                /*player.drop(stack, false);
+                *///? }
             }
 
             this.broadcastChanges();

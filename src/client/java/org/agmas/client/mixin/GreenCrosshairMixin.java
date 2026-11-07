@@ -3,32 +3,32 @@ package org.agmas.client.mixin;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 //? if <26.3 {
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-//? } else if <26.4 {
+/*import com.mojang.blaze3d.pipeline.RenderPipeline;
+*///? } else if <26.4 {
 /*import com.mojang.renderpearl.api.pipeline.RenderPipeline;
 *///? }
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.Gui;
 //? if <26.1 {
-import net.minecraft.client.gui.GuiGraphics;
-//? } else {
-/*import net.minecraft.client.gui.GuiGraphicsExtractor;
-*///? }
+/*import net.minecraft.client.gui.GuiGraphics;
+*///? } else {
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+//? }
 //? if <1.21.11 {
-import net.minecraft.resources.ResourceLocation;
- //? }
+/*import net.minecraft.resources.ResourceLocation;
+ *///? }
 //? if >26.1 {
-/*import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.Hud;
-*///? }
+//? }
 //? if >=1.21.11 {
-/*import net.minecraft.resources.Identifier;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.EasingType;
-*///? }
+//? }
 //? if >= 1.21.6 {
-/*import net.minecraft.client.renderer.RenderPipelines;
-*///? }
+import net.minecraft.client.gui.GuiPipeline;
+//? }
 import net.minecraft.util.Mth;
 import org.agmas.Tilted;
 import org.agmas.client.TiltedClient;
@@ -37,18 +37,18 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 //? if <1.21.2 {
-import org.agmas.client.polyfill.PF_Mth;
-//? }
+/*import org.agmas.client.polyfill.PF_Mth;
+*///? }
 import java.awt.*;
 
 //? if <=26.1 {
-@Mixin(value = Gui.class, priority = 20)
-//? } else {
-/*@Mixin(value = Hud.class, priority = 20)
-*///? }
+/*@Mixin(value = Gui.class, priority = 20)
+*///? } else {
+@Mixin(value = Hud.class, priority = 20)
+//? }
 public class GreenCrosshairMixin {
 	//? if <1.21.2 {
-	@WrapOperation(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;blitSprite(Lnet/minecraft/resources/ResourceLocation;IIII)V"), method = "renderCrosshair")
+	/*@WrapOperation(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;blitSprite(Lnet/minecraft/resources/ResourceLocation;IIII)V"), method = "renderCrosshair")
 	private void init(GuiGraphics instance, ResourceLocation location, int x, int y, int width, int height, Operation<Void> original) {
 		if (TiltedClient.scope && TiltedClient.adsTicks > 3) {
 			return;
@@ -70,21 +70,21 @@ public class GreenCrosshairMixin {
 			original.call(instance, location, x, y, width, height);
 		}
 	}
-	//? } else {
+	*///? } else {
 
-	/*//? if <1.21.11 {
-	@WrapOperation(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/ResourceLocation;IIII)V"), method = "renderCrosshair")
+	//? if <1.21.11 {
+	/*@WrapOperation(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/ResourceLocation;IIII)V"), method = "renderCrosshair")
 	private void init(GuiGraphics instance, RenderPipeline renderPipeline, ResourceLocation location, int x, int y, int width, int height, Operation<Void> original) {
-	//? } else <26.1 {
-	/^@WrapOperation(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"), method = "renderCrosshair")
+	*///? } else <26.1 {
+	/*@WrapOperation(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"), method = "renderCrosshair")
 	private void init(GuiGraphics instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {
-	^///? } else <26.4 {
-	/^@WrapOperation(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V", ordinal = 0), method = "extractCrosshair")
+	*///? } else <26.4 {
+	/*@WrapOperation(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V", ordinal = 0), method = "extractCrosshair")
 	private void init(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {
-	^///? } else {
-	/^@WrapOperation(method = "extractCrosshair", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lnet/minecraft/client/gui/GuiPipeline;Lnet/minecraft/resources/Identifier;IIII)V", ordinal = 0))
+	*///? } else {
+	@WrapOperation(method = "extractCrosshair", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lnet/minecraft/client/gui/GuiPipeline;Lnet/minecraft/resources/Identifier;IIII)V", ordinal = 0))
 	private void init(GuiGraphicsExtractor instance, GuiPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {
-	^///? }
+	//? }
 		if (TiltedClient.scope && TiltedClient.adsTicks > 3) {
 			return;
 		}
@@ -100,32 +100,32 @@ public class GreenCrosshairMixin {
 		}
 
 	}
-	*///? }
+	//? }
 
 	//? if >=26.1 {
-	/*@Inject(at = @At("HEAD"), method = "extractCameraOverlays")
+	@Inject(at = @At("HEAD"), method = "extractCameraOverlays")
 	private void scope(GuiGraphicsExtractor graphics,
 					   //? if <26.4
-					   DeltaTracker deltaTracker,
+					   //DeltaTracker deltaTracker,
 					   CallbackInfo ci) {
-	*///? } else {
-	@Inject(at = @At("HEAD"), method = "renderCameraOverlays")
+	//? } else {
+	/*@Inject(at = @At("HEAD"), method = "renderCameraOverlays")
 	private void scope(GuiGraphics graphics, DeltaTracker deltaTracker, CallbackInfo ci) {
-	//? }
+	*///? }
 		if (TiltedClient.scope && TiltedClient.adsTicks > 3) {
 			float srcWidth = (float)Math.min(graphics.guiWidth(), graphics.guiHeight());
 			float ticks = TiltedClient.adsTicks;
 			ticks +=
 					//? if >=26.4
-					//graphics.deltaTracker()
+					graphics.deltaTracker()
 					//? if <26.4
-					deltaTracker
+					//deltaTracker
 							.getGameTimeDeltaPartialTick(true) * (TiltedClient.pressingADS ? 1 : -1);
 			//? if >=1.21.11 {
-			/*float ratio = Math.min((float)graphics.guiWidth() / srcWidth, (float)graphics.guiHeight() / srcWidth) * EasingType.IN_OUT_SINE.apply(Math.clamp((ticks)/TiltedClient.timeToADS,0,1));
-			*///? } else if <1.21.2 {
-			float ratio = Math.min((float)graphics.guiWidth() / srcWidth, (float)graphics.guiHeight() / srcWidth) * PF_Mth.easeInOutSine(Math.clamp((ticks)/TiltedClient.timeToADS,0,1));
-			//? } else {
+			float ratio = Math.min((float)graphics.guiWidth() / srcWidth, (float)graphics.guiHeight() / srcWidth) * EasingType.IN_OUT_SINE.apply(Math.clamp((ticks)/TiltedClient.timeToADS,0,1));
+			//? } else if <1.21.2 {
+			/*float ratio = Math.min((float)graphics.guiWidth() / srcWidth, (float)graphics.guiHeight() / srcWidth) * PF_Mth.easeInOutSine(Math.clamp((ticks)/TiltedClient.timeToADS,0,1));
+			*///? } else {
 			/*float ratio = Math.min((float)graphics.guiWidth() / srcWidth, (float)graphics.guiHeight() / srcWidth) * Mth.easeInOutSine(Math.clamp((ticks)/TiltedClient.timeToADS,0,1));
 			*///? }
 			int width = Mth.floor(srcWidth * ratio);
@@ -136,13 +136,13 @@ public class GreenCrosshairMixin {
 			int bottom = top + height;
 
 			//? if >= 1.21.6 {
-			/*graphics.blit(RenderPipelines.GUI_TEXTURED, Tilted.of("textures/misc/telescopic_scope.png"), left, top, 0.0F, 0.0F, width, height, width, height);
+			graphics.blit(GuiPipeline.TEXTURED, Tilted.of("textures/misc/telescopic_scope.png"), left, top, 0.0F, 0.0F, width, height, width, height);
 			graphics.fill(0, bottom, graphics.guiWidth(), graphics.guiHeight(), Color.BLACK.getRGB());
 			graphics.fill(0, 0, graphics.guiWidth(), top, Color.BLACK.getRGB());
 			graphics.fill(0, top, left, bottom, Color.BLACK.getRGB());
 			graphics.fill(right, top, graphics.guiWidth(), bottom, Color.BLACK.getRGB());
-			*///? } else {
-			RenderSystem.enableBlend();
+			//? } else {
+			/*RenderSystem.enableBlend();
 			RenderSystem.defaultBlendFunc();
 
 			graphics.blit(Tilted.of("textures/misc/telescopic_scope.png"), left, top, 0.0f, 0.0f, width, height, width, height);
@@ -153,7 +153,7 @@ public class GreenCrosshairMixin {
 			graphics.fill(0, 0, graphics.guiWidth(), top, Color.BLACK.getRGB());
 			graphics.fill(0, top, left, bottom, Color.BLACK.getRGB());
 			graphics.fill(right, top, graphics.guiWidth(), bottom, Color.BLACK.getRGB());
-			//? }
+			*///? }
 		}
 	}
 }

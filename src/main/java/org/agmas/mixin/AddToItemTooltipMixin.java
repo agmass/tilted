@@ -7,8 +7,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.*;
 //? if >=1.21.6 {
-/*import net.minecraft.world.item.component.TooltipDisplay;
-*///? }
+import net.minecraft.world.item.component.TooltipDisplay;
+//? }
 import org.agmas.ModAttachments;
 import org.agmas.ModComponents;
 import org.agmas.ModTags;
@@ -33,7 +33,7 @@ public abstract class AddToItemTooltipMixin {
     private static Logger LOGGER;
 
     //? if >=1.21.6 {
-    /*@Inject(method = "appendHoverText", at = @At("HEAD"))
+    @Inject(method = "appendHoverText", at = @At("HEAD"))
     public void addText(ItemStack itemStack, Item.TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag, CallbackInfo ci) {
         if (itemStack.is(ModTags.CROSSBOWS)) {
             if (itemStack.has(ModComponents.BARREL_COMPONENT)) {
@@ -48,7 +48,7 @@ public abstract class AddToItemTooltipMixin {
             }
         }
     }
-    *///? }
+    //? }
 
     // weird 1.21.1 mixin quirk doesn't like base class mixins, so its moved to LeaningArrowsMixin ;D
 }

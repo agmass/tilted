@@ -27,14 +27,14 @@ public class Leaning {
         Vector3f shf = camera.rotation().transform(new Vector3f((float) (-0.3 * TiltedClient.leaning), (float) 0,0));
 
         //? if >= 1.21.5 {
-        /*if (!Minecraft.getInstance().level.noCollision(new AABB(new Vec3(camera.position().x-shf.x,camera.position().y,camera.position().z-shf.z).subtract(0.4*shf.x,0.4,0.4*shf.z), new Vec3(camera.position().x+shf.x,camera.position().y,camera.position().z+shf.z).add(0.4*shf.x,0.4,0.4*shf.z)))) {
+        if (!Minecraft.getInstance().level.noCollision(new AABB(new Vec3(camera.position().x-shf.x,camera.position().y,camera.position().z-shf.z).subtract(0.4*shf.x,0.4,0.4*shf.z), new Vec3(camera.position().x+shf.x,camera.position().y,camera.position().z+shf.z).add(0.4*shf.x,0.4,0.4*shf.z)))) {
             return new Vec3(0,0,0);
         }
-        *///? } else {
-        if (!Minecraft.getInstance().level.noCollision(new AABB(new Vec3(camera.getPosition().x-shf.x,camera.getPosition().y,camera.getPosition().z-shf.z).subtract(0.4*shf.x,0.4,0.4*shf.z), new Vec3(camera.getPosition().x+shf.x,camera.getPosition().y,camera.getPosition().z+shf.z).add(0.4*shf.x,0.4,0.4*shf.z)))) {
+        //? } else {
+        /*if (!Minecraft.getInstance().level.noCollision(new AABB(new Vec3(camera.getPosition().x-shf.x,camera.getPosition().y,camera.getPosition().z-shf.z).subtract(0.4*shf.x,0.4,0.4*shf.z), new Vec3(camera.getPosition().x+shf.x,camera.getPosition().y,camera.getPosition().z+shf.z).add(0.4*shf.x,0.4,0.4*shf.z)))) {
             return new Vec3(0,0,0);
         }
-        //? }
+        *///? }
 
         if (Minecraft.getInstance().options.getCameraType().isMirrored()) {
             shift = -shift;

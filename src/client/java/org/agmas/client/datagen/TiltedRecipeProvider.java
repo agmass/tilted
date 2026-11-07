@@ -16,10 +16,10 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 //? if >=1.21.11 {
-/*import net.minecraft.resources.Identifier;
-*///? } else {
-import net.minecraft.resources.ResourceLocation;
-//? }
+import net.minecraft.resources.Identifier;
+//? } else {
+/*import net.minecraft.resources.ResourceLocation;
+*///? }
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -27,14 +27,14 @@ import net.minecraft.world.item.Items;
 import net.minecraft.data.recipes.RecipeOutput;
 
 //? if >=1.21.2 {
-/*import net.minecraft.data.recipes.RecipeProvider;
-*///? }
+import net.minecraft.data.recipes.RecipeProvider;
+//? }
 
 //? if >=26.1 {
-/*import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
-*///? } else {
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-//? }
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+//? } else {
+/*import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+*///? }
 
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 
@@ -47,38 +47,38 @@ public class TiltedRecipeProvider extends FabricRecipeProvider {
     private final static String PATH_DIR_RECIPES = "../../src/main/resources/data/tilted/recipe";
 
     //? if >=26.1 {
-    /*public TiltedRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
-    *///? } else {
-    public TiltedRecipeProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
-    //? }
+    public TiltedRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    //? } else {
+    /*public TiltedRecipeProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    *///? }
         super(output, registriesFuture);
     }
 
     //? if >=1.21.2 {
 
-     /*@Override
+     @Override
 
     //? if >=26.3 {
 
-    /^public RecipeProvider createRecipeProvider(HolderLookup.Provider registries, BootstrapContext<Recipe<?>> recipes, BootstrapContext<Advancement> advancements) {
+    public RecipeProvider createRecipeProvider(HolderLookup.Provider registries, BootstrapContext<Recipe<?>> recipes, BootstrapContext<Advancement> advancements) {
         return new RecipeProvider(recipes, advancements) {
 
-    ^///? } else {
+    //? } else {
 
-    public RecipeProvider createRecipeProvider(HolderLookup.Provider registryLookup, RecipeOutput exporter) {
+    /*public RecipeProvider createRecipeProvider(HolderLookup.Provider registryLookup, RecipeOutput exporter) {
         return new RecipeProvider(registryLookup, exporter) {
-
-    //? }
 
     *///? }
 
-    //? if >=1.21.2 {
-    /*@Override
-    public void buildRecipes() {
-    *///? } else {
-    @Override
-    public void buildRecipes(RecipeOutput exporter) {
     //? }
+
+    //? if >=1.21.2 {
+    @Override
+    public void buildRecipes() {
+    //? } else {
+    /*@Override
+    public void buildRecipes(RecipeOutput exporter) {
+    *///? }
 
         new File(PATH_DIR_RECIPES).mkdirs();
 
@@ -147,7 +147,7 @@ public class TiltedRecipeProvider extends FabricRecipeProvider {
 
         //? if >= 26.2 {
 
-        /*writeCrossbowSmithingRecipes(SkinsComponent.                  BLACKICE, ModItems.                       ICE_SMITHING_TEMPLATE, Items.DYE.    black());
+        writeCrossbowSmithingRecipes(SkinsComponent.                  BLACKICE, ModItems.                       ICE_SMITHING_TEMPLATE, Items.DYE.    black());
         writeCrossbowSmithingRecipes(SkinsComponent.                   BLUEICE, ModItems.                       ICE_SMITHING_TEMPLATE, Items.DYE.     blue());
         writeCrossbowSmithingRecipes(SkinsComponent.                   CYANICE, ModItems.                       ICE_SMITHING_TEMPLATE, Items.DYE.     cyan());
         writeCrossbowSmithingRecipes(SkinsComponent.                  GREENICE, ModItems.                       ICE_SMITHING_TEMPLATE, Items.DYE.    green());
@@ -161,9 +161,9 @@ public class TiltedRecipeProvider extends FabricRecipeProvider {
         writeCrossbowSmithingRecipes(SkinsComponent.                       ICE, ModItems.                       ICE_SMITHING_TEMPLATE, Items.DYE.    white());
         writeCrossbowSmithingRecipes(SkinsComponent.                 YELLOWICE, ModItems.                       ICE_SMITHING_TEMPLATE, Items.DYE.   yellow());
 
-        *///? } else {
+        //? } else {
 
-        writeCrossbowSmithingRecipes(SkinsComponent.                  BLACKICE, ModItems.                       ICE_SMITHING_TEMPLATE, Items.     BLACK_DYE);
+        /*writeCrossbowSmithingRecipes(SkinsComponent.                  BLACKICE, ModItems.                       ICE_SMITHING_TEMPLATE, Items.     BLACK_DYE);
         writeCrossbowSmithingRecipes(SkinsComponent.                   BLUEICE, ModItems.                       ICE_SMITHING_TEMPLATE, Items.      BLUE_DYE);
         writeCrossbowSmithingRecipes(SkinsComponent.                   CYANICE, ModItems.                       ICE_SMITHING_TEMPLATE, Items.      CYAN_DYE);
         writeCrossbowSmithingRecipes(SkinsComponent.                  GREENICE, ModItems.                       ICE_SMITHING_TEMPLATE, Items.     GREEN_DYE);
@@ -177,17 +177,17 @@ public class TiltedRecipeProvider extends FabricRecipeProvider {
         writeCrossbowSmithingRecipes(SkinsComponent.                       ICE, ModItems.                       ICE_SMITHING_TEMPLATE, Items.     WHITE_DYE);
         writeCrossbowSmithingRecipes(SkinsComponent.                 YELLOWICE, ModItems.                       ICE_SMITHING_TEMPLATE, Items.    YELLOW_DYE);
 
-        //? }
+        *///? }
     }
 
     private void writeCrossbowSmithingRecipes(SkinsComponent skin, Item template, Item addition) {
         //? if >=1.21.11 {
-        /*Identifier templateLoc = BuiltInRegistries.ITEM.getKey(template);
+        Identifier templateLoc = BuiltInRegistries.ITEM.getKey(template);
         Identifier additionLoc = BuiltInRegistries.ITEM.getKey(addition);
-        *///? } else {
-        ResourceLocation templateLoc = BuiltInRegistries.ITEM.getKey(template);
+        //? } else {
+        /*ResourceLocation templateLoc = BuiltInRegistries.ITEM.getKey(template);
         ResourceLocation additionLoc = BuiltInRegistries.ITEM.getKey(addition);
-        //? }
+        *///? }
 
         int skinEnum = skin.ordinal();
         String skinName = skin.name();
@@ -198,7 +198,7 @@ public class TiltedRecipeProvider extends FabricRecipeProvider {
         try (FileWriter writer = new FileWriter(PATH_DIR_RECIPES + "/" + skinName.toLowerCase() + "_smithing_recipe.json")) {
             writer.write(
                 //? if >= 1.21.4 {
-                /*"""
+                """
                 {
                     "type": "minecraft:smithing_transform",
             
@@ -209,8 +209,8 @@ public class TiltedRecipeProvider extends FabricRecipeProvider {
                     "result": { "id": "minecraft:crossbow", "components": { "tilted:skin": %d } }
                 }
                 """
-                *///? } else {
-                """
+                //? } else {
+                /*"""
                 {
                     "type": "minecraft:smithing_transform",
             
@@ -221,7 +221,7 @@ public class TiltedRecipeProvider extends FabricRecipeProvider {
                     "result": { "id": "minecraft:crossbow", "components": { "tilted:skin": %d } }
                 }
                 """
-                //? }
+                *///? }
             .formatted(templatePath, additionPath, skinEnum));
         } catch (IOException e) {
             e.printStackTrace();
@@ -229,9 +229,9 @@ public class TiltedRecipeProvider extends FabricRecipeProvider {
     }
 
             //? if >=1.21.2 {
-        /*};
+        };
     }
-    *///? }
+    //? }
 
     @Override
     public @NotNull String getName() {

@@ -5,7 +5,7 @@ import org.agmas.client.duck.ItemOverridesAccessor;
 
 //? if < 1.21.4 {
 
-import java.util.List;
+/*import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -29,20 +29,20 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-//? } else {
-/*import org.agmas.client.dummy.DM_ItemOverrides;
-*///? }
+*///? } else {
+import org.agmas.client.dummy.DM_ItemOverrides;
+//? }
 
 //? if < 1.21.4 {
-@Mixin(ItemOverrides.class)
-//? } else {
-/*@Mixin(DM_ItemOverrides.class)
-*///? }
+/*@Mixin(ItemOverrides.class)
+*///? } else {
+@Mixin(DM_ItemOverrides.class)
+//? }
 
 public class ItemOverridesMixin implements ItemOverridesAccessor {
     //? if < 1.21.4 {
 
-    @Unique
+    /*@Unique
     private List<ItemOverride> overrides;
 
     @Inject(method = "<init>(Lnet/minecraft/client/resources/model/ModelBaker;Lnet/minecraft/client/renderer/block/model/BlockModel;Ljava/util/List;)V", at = @At("TAIL"))
@@ -73,5 +73,5 @@ public class ItemOverridesMixin implements ItemOverridesAccessor {
         return overrideMatched;
     }
 
-    //? }
+    *///? }
 }

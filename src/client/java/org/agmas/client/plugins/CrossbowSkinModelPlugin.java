@@ -2,7 +2,7 @@ package org.agmas.client.plugins;
 
 //? if < 1.21.4 {
 
-import net.minecraft.resources.ResourceLocation;
+/*import net.minecraft.resources.ResourceLocation;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -47,4 +47,4 @@ public class CrossbowSkinModelPlugin implements ModelLoadingPlugin {
     }
 }
 
-//? }
+*///? }

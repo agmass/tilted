@@ -1,26 +1,26 @@
 package org.agmas.client.datagen;
 
 //? if >=1.21.4 {
-/*import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
-*///? } else {
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-//? }
+import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
+//? } else {
+/*import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+*///? }
 
 //? if >=26.1 {
-/*import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
-*///? } else {
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-//? }
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+//? } else {
+/*import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+*///? }
 
 //? if >=1.21.4 {
-/*import net.minecraft.client.data.models.BlockModelGenerators;
+import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
-*///? } else {
-import net.minecraft.data.models.BlockModelGenerators;
+//? } else {
+/*import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.model.ModelTemplates;
-//? }
+*///? }
 import org.agmas.ModBlocks;
 import org.agmas.ModItems;
 import org.agmas.Tilted;
@@ -32,14 +32,14 @@ import java.io.IOException;
 
 public class TiltedModelProvider extends FabricModelProvider {
     //? if >=26.1 {
-    /*public TiltedModelProvider(FabricPackOutput output) {
+    public TiltedModelProvider(FabricPackOutput output) {
         super(output);
     }
-    *///? } else {
-    public TiltedModelProvider(FabricDataOutput output) {
+    //? } else {
+    /*public TiltedModelProvider(FabricDataOutput output) {
         super(output);
     }
-    //? }
+    *///? }
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator) {
@@ -61,10 +61,10 @@ public class TiltedModelProvider extends FabricModelProvider {
 
         //? if >= 1.21.4 {
 
-        /*dir = new File("../../src/main/resources/assets/tilted/items");
+        dir = new File("../../src/main/resources/assets/tilted/items");
         dir.mkdir();
 
-        *///? }
+        //? }
 
         itemModelGenerator.generateFlatItem(ModItems.CARNIVORA_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.RUNESCAPE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
@@ -219,8 +219,8 @@ public class TiltedModelProvider extends FabricModelProvider {
     public static void writeCrossbowSkin(SkinsComponent skinEnum) {
         // 1.21.1 uses models/item/ files for vanilla states, so no need to create main model.
         //? if >= 1.21.4 {
-        /*createMainModel(skinEnum);
-        *///? }
+        createMainModel(skinEnum);
+        //? }
 
         createSingleSkinModel(skinEnum,"_amethyst", "scatter");
         createSingleSkinModel(skinEnum,"_torch", "torch");
@@ -341,17 +341,17 @@ public class TiltedModelProvider extends FabricModelProvider {
         String skinName = skinEnum.name().toLowerCase();
 
         //? if >= 1.21.4 {
-        /*String pathDir = "../../src/main/resources/assets/tilted/items/" + skinName;
-        *///? } else {
-        String pathDir = "../../src/main/resources/assets/tilted/models/item/" + skinName;
-        //? }
+        String pathDir = "../../src/main/resources/assets/tilted/items/" + skinName;
+        //? } else {
+        /*String pathDir = "../../src/main/resources/assets/tilted/models/item/" + skinName;
+        *///? }
 
         new File(pathDir).mkdirs();
 
         try (FileWriter writer = new FileWriter(pathDir + "/crossbow" + suffix + ".json")) {
             writer.write(
                 //? if >= 1.21.4 {
-                /*"""
+                """
                 {
                     "model": {
                         "type": "minecraft:composite",
@@ -362,8 +362,8 @@ public class TiltedModelProvider extends FabricModelProvider {
                     }
                 }
                 """.formatted(skinName, composition)
-                *///? } else {
-                """
+                //? } else {
+                /*"""
                 {
                     "parent": "minecraft:item/crossbow",
                     "textures": {
@@ -372,7 +372,7 @@ public class TiltedModelProvider extends FabricModelProvider {
                     }
                 } 
                 """.formatted(skinName, composition)
-                //? }
+                *///? }
             );
         } catch (IOException e) {
             e.printStackTrace();

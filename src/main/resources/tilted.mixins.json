@@ -4,7 +4,8 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "AddToItemTooltipMixin",
-    "LeaningArrowsMixin",
+    "LeaningProjectilesMixin",
+    "OnCrossbowShootMixin",
     "OverrideFletchingTableMixin",
     "OverrideFletchingTableMixin$OverrideIntrusiveHolderMixin",
     "SilentArrowMixin",
