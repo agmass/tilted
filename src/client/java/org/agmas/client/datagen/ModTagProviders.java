@@ -38,6 +38,7 @@ public class ModTagProviders {
         @Override
         protected void addTags(HolderLookup.Provider provider) {
             add(Items.CROSSBOW, ModTags.CROSSBOWS);
+            add(ModTags.CROSSBOWS, ModTags.AIMABLE);
             add(Items.TRIDENT, ModTags.AIMABLE);
             add(Items.BOW, ModTags.AIMABLE);
             add(Items.EGG, ModTags.AIMABLE);
