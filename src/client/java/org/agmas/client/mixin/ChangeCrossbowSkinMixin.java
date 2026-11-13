@@ -27,7 +27,6 @@ public class ChangeCrossbowSkinMixin {
     /*private ResourceLocation changeSkinModel(ResourceLocation modelId, ItemStackRenderState output, ItemStack item) {
         *///? }
         if (item.has(ModComponents.SKIN_COMPONENT)) {
-            Tilted.LOGGER.info(ModComponents.skin(item.get(ModComponents.SKIN_COMPONENT)).name().toLowerCase() +"/"+modelId.getPath());
             return Tilted.of(ModComponents.skin(item.get(ModComponents.SKIN_COMPONENT)).name().toLowerCase() +"/"+modelId.getPath());
         }
         return modelId;

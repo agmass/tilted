@@ -92,8 +92,7 @@ public abstract class OnCrossbowShootMixin extends Item {
         }
         if (stack.has(ModComponents.BARREL_COMPONENT)) {
             uncertaintyMulti *= ModComponents.barrel(stack.get(ModComponents.BARREL_COMPONENT)).uncertaintyMultiplier;
-            Log.info(LogCategory.GENERAL, uncertaintyMulti+"");
-            if (stack.get(ModComponents.BARREL_COMPONENT).equals(BarrelAttachment.EXTENDED_BARREL.ordinal())) {
+             if (stack.get(ModComponents.BARREL_COMPONENT).equals(BarrelAttachment.EXTENDED_BARREL.ordinal())) {
                 powerMulti *= 1.6f;
             }
             if (stack.get(ModComponents.BARREL_COMPONENT).equals(BarrelAttachment.SUPPRESSOR.ordinal())) {
